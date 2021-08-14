@@ -2,6 +2,21 @@
 
 
 
+## [임시] 실행방법
+
+1. frontend로 폴더 이동
+
+```bash
+npm install # 필요 모듈설치
+```
+
+2. backend로 폴더 이동
+
+```bash
+./gradlew build # 빌드 (frontend 영역까지 통합 빌드)
+java -jar ./build/libs/hackaton-0.0.1-SNAPSHOT.jar # 빌드 된 jar파일 실행
+```
+
 ## 기획배경
 
 > 거주를 위한 20~30대 청년층(직장인, 신혼부부)은 전세자금 마련을 위해 수 많은 주거정책과 신용대출상품을 비교하며 많은 시간 할애
