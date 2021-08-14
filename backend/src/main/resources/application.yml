@@ -6,7 +6,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
-      
+
 spring:
   devtools:
     livereload:
@@ -16,3 +16,40 @@ spring:
 
   freemarker:
     cache: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql의 jdbc 드라이버
+    url: jdbc:mysql://localhost:3306/authLogin?serverTimezone=Asia/Seoul # 데이터베이스 url
+    username: chaehyeon
+    password: dl7164
+
+  jpa:
+    hibernate:
+      ddl-auto: update #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 178452780658-rlgo7j9amd4vqku1lktiumde9a01nrgo.apps.googleusercontent.com
+            clientSecret: fpj5XCConcMrGNwNTnhz6xJJ
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            # redirectUri: "{baseUrl}/login/oauth2/google"
+            scope: email, profile
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
