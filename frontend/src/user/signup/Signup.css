@@ -26,7 +26,7 @@
   margin-top: 10px;
 }
 
-.social-btn.google {
+.social-btn.google img {
   margin-top: 7px;
 }
 
@@ -36,6 +36,16 @@
 }
 
 .social-btn.github img {
+  height: 24px;
+  margin-left: 3px;
+}
+
+.social-btn.naver img {
+  height: 24px;
+  margin-left: 3px;
+}
+
+.social-btn.kakao img {
   height: 24px;
   margin-left: 3px;
 }

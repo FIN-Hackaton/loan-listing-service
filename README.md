@@ -8,6 +8,7 @@
 
 ```bash
 npm install # 필요 모듈설치
+npm start
 ```
 
 2. backend로 폴더 이동
@@ -16,6 +17,22 @@ npm install # 필요 모듈설치
 ./gradlew build # 빌드 (frontend 영역까지 통합 빌드)
 java -jar ./build/libs/hackaton-0.0.1-SNAPSHOT.jar # 빌드 된 jar파일 실행
 ```
+
+---
+
+## 기능
+
+### 로그인 기능
+
+>Google, Naver, Kakao
+
+> 이메일 가입
+
+이메일 중복 가입 불가
+
+facebook, github 로그인은 막아둠
+
+---
 
 ## 기획배경
 

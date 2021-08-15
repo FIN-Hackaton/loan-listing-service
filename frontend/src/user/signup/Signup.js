@@ -5,11 +5,15 @@ import {
   GOOGLE_AUTH_URL,
   FACEBOOK_AUTH_URL,
   GITHUB_AUTH_URL,
+  NAVER_AUTH_URL,
+  KAKAO_AUTH_URL,
 } from "../../constants";
 import { signup } from "../../util/APIUtils";
 import fbLogo from "../../img/fb-logo.png";
 import googleLogo from "../../img/google-logo.png";
 import githubLogo from "../../img/github-logo.png";
+import naverLogo from "../../img/naver-logo.png";
+import kakaoLogo from "../../img/kakao-logo.png";
 import Alert from "react-s-alert";
 
 class Signup extends Component {
@@ -28,7 +32,7 @@ class Signup extends Component {
     return (
       <div className="signup-container">
         <div className="signup-content">
-          <h1 className="signup-title">Signup with SpringSocial</h1>
+          <h1 className="signup-title">Signup with 애플리케이션이름</h1>
           <SocialSignup />
           <div className="or-separator">
             <span className="or-text">OR</span>
@@ -49,6 +53,12 @@ class SocialSignup extends Component {
       <div className="social-signup">
         <a className="btn btn-block social-btn google" href={GOOGLE_AUTH_URL}>
           <img src={googleLogo} alt="Google" /> Sign up with Google
+        </a>
+        <a className="btn btn-block social-btn naver" href={NAVER_AUTH_URL}>
+          <img src={naverLogo} alt="Naver" /> Sign up with Naver
+        </a>
+        <a className="btn btn-block social-btn kakao" href={KAKAO_AUTH_URL}>
+          <img src={kakaoLogo} alt="Kakao" /> Sign up with Kakao
         </a>
         <a
           className="btn btn-block social-btn facebook"

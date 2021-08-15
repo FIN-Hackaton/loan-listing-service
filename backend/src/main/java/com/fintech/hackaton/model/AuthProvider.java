@@ -1,8 +1,10 @@
 package com.fintech.hackaton.model;
 
-public enum  AuthProvider {
+public enum AuthProvider {
     local,
-    facebook,
     google,
-    github
+    facebook,
+    github,
+    naver,
+    kakao
 }
