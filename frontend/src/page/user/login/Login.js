@@ -7,14 +7,14 @@ import {
   NAVER_AUTH_URL,
   KAKAO_AUTH_URL,
   ACCESS_TOKEN,
-} from "../../constants";
-import { login } from "../../util/APIUtils";
+} from "../../../constants";
+import { login } from "../../../util/APIUtils";
 import { Link, Redirect } from "react-router-dom";
-import fbLogo from "../../img/fb-logo.png";
-import googleLogo from "../../img/google-logo.png";
-import githubLogo from "../../img/github-logo.png";
-import naverLogo from "../../img/naver-logo.png";
-import kakaoLogo from "../../img/kakao-logo.png";
+import fbLogo from "../../../img/fb-logo.png";
+import googleLogo from "../../../img/google-logo.png";
+import githubLogo from "../../../img/github-logo.png";
+import naverLogo from "../../../img/naver-logo.png";
+import kakaoLogo from "../../../img/kakao-logo.png";
 import Alert from "react-s-alert";
 
 class Login extends Component {

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import AppHeader from "../common/AppHeader";
-import Home from "../home/Home";
-import Login from "../user/login/Login";
+import Home from "../page/home/Home";
+import Login from "../page/user/login/Login";
 import Signup from "../user/signup/Signup";
-import Profile from "../user/profile/Profile";
-import MapPage from "../page/MapPage";
-import OAuth2RedirectHandler from "../user/oauth2/OAuth2RedirectHandler";
+import Profile from "../page/user/profile/Profile";
+import MapPage from "../page/Map/MapPage";
+import OAuth2RedirectHandler from "../util/oauth2/OAuth2RedirectHandler";
 import NotFound from "../common/NotFound";
 import LoadingIndicator from "../common/LoadingIndicator";
 import { getCurrentUser } from "../util/APIUtils";
