@@ -52,3 +52,29 @@ export function signup(signupRequest) {
     body: JSON.stringify(signupRequest),
   });
 }
+
+const testRequest = options => {
+  const headers = new Headers({
+    "Content-Type": "application/json",
+  });
+  const defaults = { headers: headers };
+  options = Object.assign({}, defaults, options);
+
+  console.log(typeof options);
+  return fetch(options.url, options).then(response =>
+    response.json().then(json => {
+      if (!response.ok) {
+        return Promise.reject(json);
+      }
+      return json;
+    })
+  );
+};
+
+export function test(searchParameter) {
+  return testRequest({
+    url: API_BASE_URL + "/api/hello",
+    method: "POST",
+    body: JSON.stringify(searchParameter),
+  });
+}

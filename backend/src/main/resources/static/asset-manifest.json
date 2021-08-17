@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.c75a5eb5.chunk.css",
-    "main.js": "/static/js/main.dd3c8b1d.chunk.js",
-    "main.js.map": "/static/js/main.dd3c8b1d.chunk.js.map",
+    "main.css": "/static/css/main.7671b174.chunk.css",
+    "main.js": "/static/js/main.45511820.chunk.js",
+    "main.js.map": "/static/js/main.45511820.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8233b8b5.js",
     "runtime-main.js.map": "/static/js/runtime-main.8233b8b5.js.map",
     "static/css/2.8622182d.chunk.css": "/static/css/2.8622182d.chunk.css",
-    "static/js/2.35cf5a39.chunk.js": "/static/js/2.35cf5a39.chunk.js",
-    "static/js/2.35cf5a39.chunk.js.map": "/static/js/2.35cf5a39.chunk.js.map",
+    "static/js/2.829485fe.chunk.js": "/static/js/2.829485fe.chunk.js",
+    "static/js/2.829485fe.chunk.js.map": "/static/js/2.829485fe.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.8622182d.chunk.css.map": "/static/css/2.8622182d.chunk.css.map",
-    "static/css/main.c75a5eb5.chunk.css.map": "/static/css/main.c75a5eb5.chunk.css.map",
-    "static/js/2.35cf5a39.chunk.js.LICENSE.txt": "/static/js/2.35cf5a39.chunk.js.LICENSE.txt",
+    "static/css/main.7671b174.chunk.css.map": "/static/css/main.7671b174.chunk.css.map",
+    "static/js/2.829485fe.chunk.js.LICENSE.txt": "/static/js/2.829485fe.chunk.js.LICENSE.txt",
     "static/media/google-logo.d74131b9.png": "/static/media/google-logo.d74131b9.png",
     "static/media/kakao-logo.041e0168.png": "/static/media/kakao-logo.041e0168.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8233b8b5.js",
     "static/css/2.8622182d.chunk.css",
-    "static/js/2.35cf5a39.chunk.js",
-    "static/css/main.c75a5eb5.chunk.css",
-    "static/js/main.dd3c8b1d.chunk.js"
+    "static/js/2.829485fe.chunk.js",
+    "static/css/main.7671b174.chunk.css",
+    "static/js/main.45511820.chunk.js"
   ]
 }
