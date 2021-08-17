@@ -34,20 +34,22 @@ const Sidebar = props => {
   for (let ind = 0; ind < 10; ind++) {
     links.push(
       <a key={ind} href="#" style={styles.sidebarLink}>
-        Mock menu item {ind}
+        대출상품 {ind}
       </a>
     );
   }
 
   return (
     <div style={styles.content}>
-      <a href="index.html" style={styles.sidebarLink}>
-        Home
-      </a>
-      <a href="responsive_example.html" style={styles.sidebarLink}>
-        Responsive Example
-      </a>
+      <h1>매물 상세정보</h1>
+      <span>위치:A</span>
+      <br />
+      <span>공인중개사명:A </span>
+      <span>전화번호:A</span>
       <div style={styles.divider} />
+
+      {/* <a href="index.html" style={styles.sidebarLink}></a> */}
+      <h3>대출 추천상품</h3>
       {links}
     </div>
   );

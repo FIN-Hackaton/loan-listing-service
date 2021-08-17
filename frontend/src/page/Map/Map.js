@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { NaverMap, RenderAfterNavermapsLoaded, Marker } from "react-naver-maps";
 import "./Map.css";
+import MapPage from "./MapPage";
 
 const HOME_PATH = window.HOME_PATH || ".";
 
@@ -9,8 +10,8 @@ class Map extends Component {
     super(props);
 
     const navermaps = window.naver.maps;
-
     this.state = {
+      docked: false,
       center: { lat: 37.3595704, lng: 127.105399 },
     };
 
@@ -41,13 +42,16 @@ class Map extends Component {
       });
     }
   }
+
+  // MaPPage 컨트롤
+
   render() {
     const navermaps = window.naver.maps;
     return (
       <div>
         <NaverMap
           id="maps-getting-started-controlled"
-          style={{ width: "100%", height: "calc(100vh - 140px)" }}
+          style={{ width: "100%", height: "calc(100vh - 81px)" }}
           defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)} //지도의 초기 중심 좌표
           defaultZoom={16}
           // {...this.state}
@@ -92,8 +96,13 @@ class Map extends Component {
               })
             }
             title="매물1"
+            // onClick={() => {
+            //   alert("여기는 네이버 입니다.");
+            //   console.log();
+            // }}
             onClick={() => {
-              alert("여기는 네이버 입니다.");
+              // console.log(this.props.sideControl);
+              this.props.sideControl();
             }}
           ></Marker>
         </NaverMap>
