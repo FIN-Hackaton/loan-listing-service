@@ -304,6 +304,29 @@
   
   transition: 0.5s;
 
-  --button-bg-color: #28a745;
-  --button-hover-bg-color: #218838;
+  --button-bg-color: #b6ffc7;
+  --button-hover-bg-color: #b6ffc7;
+}
+
+.container input#search{
+  width: 200px;
+  height: 40px;
+  background: #d1e4fa;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #b6c9db;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-left:150px;
+}
+
+.container .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #212325;
 }

@@ -99,45 +99,41 @@ class Home extends Component {
           </div>
           <h1 className="home-title">Fintech-Hackaton </h1>
 
+          <p className="search-title">월 부담 가능 이자 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            거주 희망 지역  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    개인 신용 등급</p>
           <form onSubmit={this.submit}>
-            {/* <select name="type" onChange={this.changeInput}>
-          <option defaultValue>월 부담 가능</option>
-          <option>수입</option>
-        </select> */}
-            <p>
-              월 부담 가능 이자 :
+
+          <div class="container">
+              {/* <label id="first">월 부담 가능 이자</label> */}
               <input
+                id="search"
                 placeholder="월 부담 가능 이자 "
                 type="number"
                 name="interest"
                 value={this.state.interest}
                 onChange={this.changeInput}
               />
-              거주 희망 지역 :
-              {/* <select name="type" onChange={this.changeInput}>
-          <option defaultValue>월 부담 가능</option>
-          <option>수입</option>
-        </select> */}
+              {/* <label id="second">거주 희망 지역</label> */}
               <input
+                id="search"
                 placeholder="거주 희망 지역 "
                 name="area"
                 value={this.state.area}
                 onChange={this.changeInput}
               />
-              개인 신용 등급 :
+
+              {/* <label id="third">개인 신용 등급</label> */}
               <input
+                id="search"
                 placeholder="개인 신용 등급 "
                 name="credit"
                 value={this.state.credit}
                 onChange={this.changeInput}
               />
-              <button id="searchbtn" type="submit">
-                추가
-              </button>
-            </p>
-            <div>
-              {this.state.interest} {this.state.area} {this.state.credit}
             </div>
+
+            <button id="searchbtn" type="submit" >추가</button>
+            <div>{this.state.interest} {this.state.area} {this.state.credit}</div>
           </form>
         </div>
       </div>
