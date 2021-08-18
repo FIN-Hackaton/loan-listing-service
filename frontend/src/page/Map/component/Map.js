@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import InfoWindowEx from "./InfoWindowEx.js";
 import "./Map.css";
 
@@ -170,18 +170,28 @@ class MapInfo extends Component {
   // };
 
   render() {
+    const googleMap = this.props.google;
+
     const mapStyles = {
+      position: "relative",
       width: "100%",
       height: "calc(100vh - 60px)",
     };
-
+    console.log(googleMap);
     return (
       <Map
-        google={this.props.google}
+        google={googleMap}
         zoom={12}
         style={mapStyles}
         initialCenter={this.state.center}
         onClick={this.removeMarkerInfos}
+        streetViewControl={false}
+        fullscreenControl={false}
+        scaleControl={true}
+        mapTypeControlOptions={{
+          style: googleMap.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          position: googleMap.maps.ControlPosition.TOP_RIGHT,
+        }}
       >
         {this.displayMarkers()}
         {this.displayInfoWindows()}
@@ -190,6 +200,10 @@ class MapInfo extends Component {
   }
 }
 
+const LoadingContainer = props => <div>Loading MapData!</div>;
+
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAP_API,
+  language: "ko",
+  LoadingContainer: LoadingContainer,
 })(MapInfo);

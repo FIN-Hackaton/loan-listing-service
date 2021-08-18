@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Map from "./Map.js";
+import Map from "./component/Map.js";
 import Sidebar from "react-sidebar";
-import SidebarContent from "./Sidebar.js";
+import SidebarContent from "./component/Sidebar.js";
 
 const styles = {
   content: {
