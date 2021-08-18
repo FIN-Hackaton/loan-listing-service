@@ -15,6 +15,7 @@ const styles = {
     height: "cal(100vh -60px)",
   },
 };
+
 class MapPage extends React.Component {
   constructor(props) {
     super(props);
@@ -24,19 +25,24 @@ class MapPage extends React.Component {
       transitions: true,
       touch: true,
       shadow: true,
+      placeInfo: [],
     };
 
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.sideBarOn = this.sideBarOn.bind(this);
+    this.sideBarOff = this.sideBarOff.bind(this);
   }
 
-  toggleMenu() {
-    this.setState({ docked: !this.state.docked });
-    // if (this.state["docked"] === false) {
-    //   this.setState({ docked: 1 });
-    // } else {
-    //   this.setState({ docked: 0 });
-    // }
+  sideBarOn = place => {
+    // console.log("MapPage", sidebarCheck);
+    // this.setState({ docked: !this.state.docked });
+    console.log("sideBar", place);
+    this.setState({ docked: true, placeInfo: place });
+  };
+
+  sideBarOff() {
+    this.setState({ docked: false });
   }
+
   render() {
     const sidebar = <SidebarContent />;
 
@@ -49,13 +55,14 @@ class MapPage extends React.Component {
       shadow: this.state.shadow,
       transitions: this.state.transitions,
       styles: styles,
+      placeInfo: this.state.placeInfo,
     };
 
     return (
       <Sidebar {...sidebarProps}>
-        <button onClick={this.toggleMenu}>Click me!</button>
+        {/* <button onClick={this.toggleMenu}>Click me!</button> */}
         {/* <Map /> */}
-        <Map sideControl={this.toggleMenu} />
+        <Map sideBarOn={this.sideBarOn} sideBarOff={this.sideBarOff} />
       </Sidebar>
     );
   }

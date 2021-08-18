@@ -1,166 +1,195 @@
-import { Component } from "react";
-import { NaverMap, RenderAfterNavermapsLoaded, Marker } from "react-naver-maps";
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import InfoWindowEx from "./InfoWindowEx.js";
 import "./Map.css";
-import MapPage from "./MapPage";
 
 const HOME_PATH = window.HOME_PATH || ".";
 
-class Map extends Component {
+const places = [
+  {
+    name: "네이버",
+    title: "네이버",
+    lat: 37.3595704,
+    lng: 127.105399,
+    id: 1,
+  },
+  {
+    name: "카카오 판교",
+    title: "카카오 판교",
+    lat: 37.4020589,
+    lng: 127.1067883,
+    id: 2,
+  },
+  {
+    name: "라인플러스",
+    title: "라인플러스",
+    lat: 37.385324,
+    lng: 127.1209902,
+    id: 3,
+  },
+];
+
+class MapInfo extends Component {
   constructor(props) {
     super(props);
 
-    const navermaps = window.naver.maps;
     this.state = {
       docked: false,
+      stores: [],
       center: { lat: 37.3595704, lng: 127.105399 },
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
     };
-
-    // this.toggleInteraction = this.toggleInteraction.bind(this);
-    this.toggleControl = this.toggleControl.bind(this);
-
-    this.panToNaver = this.panToNaver.bind(this);
-  }
-  panToNaver() {
-    this.setState({ center: { lat: 37.3595704, lng: 127.105399 } });
-  }
-  toggleControl() {
-    if (this.state.scaleControl) {
-      this.setState({
-        scaleControl: false,
-        logoControl: false,
-        mapDataControl: false,
-        zoomControl: false,
-        mapTypeControl: false,
-      });
-    } else {
-      this.setState({
-        scaleControl: true,
-        logoControl: true,
-        mapDataControl: true,
-        zoomControl: true,
-        mapTypeControl: true,
-      });
-    }
   }
 
-  // MaPPage 컨트롤
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props.place_,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+  };
+
+  showDetails = place => {
+    console.log(place);
+  };
+
+  onEventChecker = (e, aug, geo) => {
+    console.log(e);
+    console.log(aug);
+    console.log(geo);
+  };
+
+  // addMarkers = async (e, aug, geoData) => {
+  //   // console.log(aug);
+  //   const { stores } = this.state;
+  //   let stateData = stores;
+  //   let latLng;
+  //   latLng = {
+  //     latitude: geoData.latLng.lat(),
+  //     longitude: geoData.latLng.lng(),
+  //   };
+  //   stateData.push(latLng);
+  //   await this.setState({
+  //     stores: stateData,
+  //   });
+  // };
+
+  displayMarkers = () => {
+    // console.log(this.state);
+    // console.log(places);
+    return places.map((place, i) => {
+      return (
+        <Marker
+          key={place.id}
+          position={{ lat: place.lat, lng: place.lng }}
+          // label={store.title}
+          label={place.name}
+          place_={place}
+          animation={0} // {BOUNCE: 1, DROP: 2, Lq: 3, Iq: 4}
+          onClick={this.onMarkerClick}
+        />
+      );
+    });
+  };
+
+  removeMarkerInfos = () => {
+    this.setState({
+      showingInfoWindow: false,
+    });
+    this.props.sideBarOff();
+  };
+
+  // displayInfoWindows = () => {
+  //   return this.state.stores.map((store, index) => {
+  //     return (
+  //       <InfoWindowEx
+  //         key={index}
+  //         visible={store.bool}
+  //         // position={{ lat: store.latitude, lng: store.longitude }}
+  //         content={store.title}
+  //         onClose={() => this.visibleInfoWindow(index)}
+  //       >
+  //         <div className="infowindow_wrap">
+  //           <div className="infowindow">
+  //             <div id="infoTitle" className="info_title">
+  //               <div className="place_name">{index}</div>
+  //             </div>
+  //             <div className="info_etc">
+  //               <p>내용 테스트1</p>
+  //               <p>내용 테스트2</p>
+  //               {/* <p>{place.vicinity}</p>
+  //               <p>⭐{place.rating || "별점없음"}</p> */}
+  //             </div>
+  //             <button
+  //               id="more_detail"
+  //               onClick={() => {
+  //                 console.log(this.props);
+  //                 this.props.sideControl();
+  //               }}
+  //             >
+  //               &#62;
+  //             </button>
+  //           </div>
+  //           <div className="infowindow_anchor"></div>
+  //         </div>
+  //       </InfoWindowEx>
+  //     );
+  //   });
+  // };
+
+  displayInfoWindows = () => {
+    return (
+      <InfoWindowEx
+        marker={this.state.activeMarker}
+        visible={this.state.showingInfoWindow}
+      >
+        <div>
+          <h3>{this.state.selectedPlace.name}</h3>
+          <button
+            type="button"
+            onClick={() => {
+              this.props.sideBarOn(this.state.selectedPlace);
+            }}
+          >
+            Show details
+          </button>
+        </div>
+      </InfoWindowEx>
+    );
+  };
+
+  // visibleInfoWindow = async i => {
+  //   const { stores } = this.state;
+  //   let stateData = stores;
+  //   stateData[i].bool = !stateData[i].bool;
+  //   await this.setState({
+  //     stores: stateData,
+  //   });
+  // };
 
   render() {
-    const navermaps = window.naver.maps;
-    return (
-      <div>
-        <NaverMap
-          id="maps-getting-started-controlled"
-          style={{ width: "100%", height: "calc(100vh - 81px)" }}
-          defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)} //지도의 초기 중심 좌표
-          defaultZoom={16}
-          // {...this.state}
+    const mapStyles = {
+      width: "100%",
+      height: "calc(100vh - 60px)",
+    };
 
-          zoomControl={true} // 지도 축척 컨트롤의 표시 여부입니다.
-          zoomControlOptions={{
-            style: navermaps.ZoomControlStyle.SMALL,
-            position: navermaps.Position.RIGHT_BOTTOM,
-          }}
-          scaleControl={true}
-          scaleControlOptions={{
-            position: navermaps.Position.RIGHT_BOTTOM,
-          }}
-          logoControl={true} // NAVER 로고 컨트롤의 표시 여부입니다. (항상 노출로 변경됨)
-          logoControlOptions={{
-            position: navermaps.Position.LEFT_BOTTOM,
-          }}
-          mapTypeControl={true} // 지도 유형 컨트롤의 표시 여부입니다.
-          mapTypeControlOptions={{
-            style: navermaps.MapTypeControlStyle.BUTTON,
-            position: navermaps.Position.TOP_RIGHT,
-          }}
-          mapDataControl={false} // 지도 데이터 저작권 컨트롤의 표시 여부입니다.
-        >
-          {/* <Buttons>
-            <ControlBtn
-              controlOn={this.state.scaleControl}
-              onClick={this.toggleControl}
-            >
-              모든 지도 컨트롤
-            </ControlBtn>
-          </Buttons> */}
-          <Marker
-            position={new navermaps.LatLng(37.3595704, 127.105399)}
-            animation={navermaps.Animation.BOUNCE}
-            icon={
-              (navermaps.ImageIcon = {
-                url: HOME_PATH + "/logo192.png",
-                size: new navermaps.Size(192, 192),
-                origin: new navermaps.Point(0, 0),
-                anchor: new navermaps.Point(0, 0),
-              })
-            }
-            title="매물1"
-            // onClick={() => {
-            //   alert("여기는 네이버 입니다.");
-            //   console.log();
-            // }}
-            onClick={() => {
-              // console.log(this.props.sideControl);
-              this.props.sideControl();
-            }}
-          ></Marker>
-        </NaverMap>
-      </div>
+    return (
+      <Map
+        google={this.props.google}
+        zoom={12}
+        style={mapStyles}
+        initialCenter={this.state.center}
+        onClick={this.removeMarkerInfos}
+      >
+        {this.displayMarkers()}
+        {this.displayInfoWindows()}
+      </Map>
     );
   }
 }
 
-function ControlBtn({ controlOn = false, ...restProps }) {
-  let style = {
-    color: "#555",
-    padding: "2px 6px",
-    background: "#fff",
-    border: "solid 1px #333",
-    cursor: "pointer",
-    borderRadius: "5px",
-    outline: "0 none",
-    boxShadow: "2px 2px 1px 1px rgba(0, 0, 0, 0.5)",
-    fontSize: "14px",
-    margin: "0 5px 5px 0",
-  };
-
-  if (controlOn) {
-    style = {
-      ...style,
-      background: "#2780E3",
-      color: "#FFF",
-    };
-  }
-
-  return <button style={style} {...restProps} />;
-}
-
-/**
- * Buttons
- * 예시에서는 생략되어있다. .buttons 에 해당한다.
- */
-function Buttons(props) {
-  return (
-    <div
-      style={{
-        zIndex: 1000,
-        position: "absolute",
-        display: "inline-block",
-      }}
-      {...props}
-    />
-  );
-}
-
-<RenderAfterNavermapsLoaded
-  clientId={"drgyzrzre5"}
-  // Naver Cloud Platform 유저의 경우 props.clientId 대신 props.ncpClientId를 사용합니다.
-  // ncpClientId={YOUR_NCP_CLIENT_ID}
-  error={<p>Maps Load Error</p>}
-  loading={<p>Maps Loading...</p>}
->
-  <Map />
-</RenderAfterNavermapsLoaded>;
-
-export default Map;
+export default GoogleApiWrapper({
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_API,
+})(MapInfo);
