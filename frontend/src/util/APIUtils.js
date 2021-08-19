@@ -73,7 +73,7 @@ const testRequest = options => {
 
 export function test(searchParameter) {
   return testRequest({
-    url: API_BASE_URL + "/api/hello",
+    url: API_BASE_URL + "/sales/api/hello",
     method: "POST",
     body: JSON.stringify(searchParameter),
   });
