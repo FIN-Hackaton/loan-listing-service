@@ -25,6 +25,12 @@ const styles = {
 };
 
 const Sidebar = props => {
+  console.log(props);
+  const name = props.places2.name;
+  const jeonse = props.places2.jeonse;
+  const lat = props.places2.lat;
+  const lng = props.places2.lng;
+
   const style = props.style
     ? { ...styles.sidebar, ...props.style }
     : styles.sidebar;
@@ -42,7 +48,11 @@ const Sidebar = props => {
   return (
     <div style={styles.content}>
       <h1>매물 상세정보</h1>
-      <span>위치:A</span>
+      <p>이름: {name}</p>
+      <p>가격: {jeonse}</p>
+      <span>
+        위치: {lat} {lng}
+      </span>
       <br />
       <span>공인중개사명:A </span>
       <span>전화번호:A</span>

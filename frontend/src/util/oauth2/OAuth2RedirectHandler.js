@@ -26,7 +26,7 @@ class OAuth2RedirectHandler extends Component {
             pathname: "/",
             state: { from: this.props.location },
           }}
-        />
+        ></Redirect>
       );
     } else {
       return (

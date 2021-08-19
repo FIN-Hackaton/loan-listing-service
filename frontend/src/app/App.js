@@ -81,7 +81,8 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={props => <Home dddd={"dddd"} {...props} />}
+              // render={props => <Home dddd={"dddd"} {...prop
+              component={Home}
             ></Route>
             <PrivateRoute
               path="/profile"

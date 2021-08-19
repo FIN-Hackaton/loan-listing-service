@@ -19,20 +19,14 @@ const getCurrentTimetoString = () => {
 class Home extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
-  }
-  // static defaultProps = {
-  //   onAdd: () => {
-  //     console.log("onAdd is not defined.");
-  //   }
-  // };
 
-  state = {
-    interest: "",
-    area: "",
-    credit: "",
-    date: "",
-  };
+    this.state = {
+      interest: "",
+      area: "",
+      credit: "",
+      date: "",
+    };
+  }
 
   // input 태그의 내용에 변화가 발생했을 때 이벤트 처리
   changeInput = event => {
@@ -61,14 +55,11 @@ class Home extends Component {
     const searchParameter = Object.assign({}, this.state);
     test(searchParameter)
       .then(response => {
-        // Alert.success("You're successfully logged in!");
         console.log(response);
-        // this.props.history.push("/");
-
-        // this.props.history.replace({
-        //   pathname: "/",
-        //   state: { from: this.props.location },
-        // });
+        this.props.history.push({
+          pathname: "/map",
+          state: { lists: response },
+        });
       })
       .catch(error => {
         Alert.error(
@@ -99,11 +90,15 @@ class Home extends Component {
           </div>
           <h1 className="home-title">Fintech-Hackaton </h1>
 
-          <p className="search-title">월 부담 가능 이자 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            거주 희망 지역  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    개인 신용 등급</p>
+          <p className="search-title">
+            월 부담 가능 이자
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            거주 희망 지역
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            개인 신용 등급
+          </p>
           <form onSubmit={this.submit}>
-
-          <div class="container">
+            <div class="container">
               {/* <label id="first">월 부담 가능 이자</label> */}
               <input
                 id="search"
@@ -132,8 +127,12 @@ class Home extends Component {
               />
             </div>
 
-            <button id="searchbtn" type="submit" >추가</button>
-            <div>{this.state.interest} {this.state.area} {this.state.credit}</div>
+            <button id="searchbtn" type="submit">
+              추가
+            </button>
+            <div>
+              {this.state.interest} {this.state.area} {this.state.credit}
+            </div>
           </form>
         </div>
       </div>

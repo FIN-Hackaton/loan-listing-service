@@ -60,7 +60,6 @@ const testRequest = options => {
   const defaults = { headers: headers };
   options = Object.assign({}, defaults, options);
 
-  console.log(typeof options);
   return fetch(options.url, options).then(response =>
     response.json().then(json => {
       if (!response.ok) {
@@ -73,7 +72,7 @@ const testRequest = options => {
 
 export function test(searchParameter) {
   return testRequest({
-    url: API_BASE_URL + "/sales/api/hello",
+    url: API_BASE_URL + "/search/house",
     method: "POST",
     body: JSON.stringify(searchParameter),
   });

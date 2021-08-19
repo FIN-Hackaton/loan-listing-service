@@ -4,8 +4,8 @@ import InfoWindowEx from "./InfoWindowEx.js";
 import "./Map.css";
 
 const HOME_PATH = window.HOME_PATH || ".";
-
-const places = [
+const places = [];
+const sample_places = [
   {
     name: "네이버",
     title: "네이버",
@@ -32,7 +32,6 @@ const places = [
 class MapInfo extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       docked: false,
       stores: [],
@@ -41,6 +40,12 @@ class MapInfo extends Component {
       activeMarker: {},
       selectedPlace: {},
     };
+    // console.log(this.props);
+    // DB로부터 받은 매물 정보 사용가능하게 변환
+    const placeLists = this.props.places.lists;
+    for (var key in placeLists) {
+      places.push(placeLists[key]);
+    }
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -49,6 +54,7 @@ class MapInfo extends Component {
       activeMarker: marker,
       showingInfoWindow: true,
     });
+    this.props.ifOffSidebar(this.state.selectedPlace); // 사이드바가 닫혀있을 때 마커를 클릭했을 때 장소정보만 전달sidebar...
   };
 
   showDetails = place => {
@@ -61,30 +67,13 @@ class MapInfo extends Component {
     console.log(geo);
   };
 
-  // addMarkers = async (e, aug, geoData) => {
-  //   // console.log(aug);
-  //   const { stores } = this.state;
-  //   let stateData = stores;
-  //   let latLng;
-  //   latLng = {
-  //     latitude: geoData.latLng.lat(),
-  //     longitude: geoData.latLng.lng(),
-  //   };
-  //   stateData.push(latLng);
-  //   await this.setState({
-  //     stores: stateData,
-  //   });
-  // };
-
   displayMarkers = () => {
-    // console.log(this.state);
     // console.log(places);
     return places.map((place, i) => {
       return (
         <Marker
           key={place.id}
           position={{ lat: place.lat, lng: place.lng }}
-          // label={store.title}
           label={place.name}
           place_={place}
           animation={0} // {BOUNCE: 1, DROP: 2, Lq: 3, Iq: 4}
@@ -101,44 +90,6 @@ class MapInfo extends Component {
     this.props.sideBarOff();
   };
 
-  // displayInfoWindows = () => {
-  //   return this.state.stores.map((store, index) => {
-  //     return (
-  //       <InfoWindowEx
-  //         key={index}
-  //         visible={store.bool}
-  //         // position={{ lat: store.latitude, lng: store.longitude }}
-  //         content={store.title}
-  //         onClose={() => this.visibleInfoWindow(index)}
-  //       >
-  //         <div className="infowindow_wrap">
-  //           <div className="infowindow">
-  //             <div id="infoTitle" className="info_title">
-  //               <div className="place_name">{index}</div>
-  //             </div>
-  //             <div className="info_etc">
-  //               <p>내용 테스트1</p>
-  //               <p>내용 테스트2</p>
-  //               {/* <p>{place.vicinity}</p>
-  //               <p>⭐{place.rating || "별점없음"}</p> */}
-  //             </div>
-  //             <button
-  //               id="more_detail"
-  //               onClick={() => {
-  //                 console.log(this.props);
-  //                 this.props.sideControl();
-  //               }}
-  //             >
-  //               &#62;
-  //             </button>
-  //           </div>
-  //           <div className="infowindow_anchor"></div>
-  //         </div>
-  //       </InfoWindowEx>
-  //     );
-  //   });
-  // };
-
   displayInfoWindows = () => {
     return (
       <InfoWindowEx
@@ -147,6 +98,8 @@ class MapInfo extends Component {
       >
         <div>
           <h3>{this.state.selectedPlace.name}</h3>
+          <p>정보1</p>
+          <p>정보2</p>
           <button
             type="button"
             onClick={() => {
@@ -160,15 +113,6 @@ class MapInfo extends Component {
     );
   };
 
-  // visibleInfoWindow = async i => {
-  //   const { stores } = this.state;
-  //   let stateData = stores;
-  //   stateData[i].bool = !stateData[i].bool;
-  //   await this.setState({
-  //     stores: stateData,
-  //   });
-  // };
-
   render() {
     const googleMap = this.props.google;
 
@@ -177,7 +121,7 @@ class MapInfo extends Component {
       width: "100%",
       height: "calc(100vh - 60px)",
     };
-    console.log(googleMap);
+    // console.log(googleMap);
     return (
       <Map
         google={googleMap}

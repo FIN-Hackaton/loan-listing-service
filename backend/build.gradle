@@ -42,15 +42,15 @@ test {
 // 리액트프로젝트 빌드 후, 스프링 프로젝트로 이동
 //$projectDir은 스프링 부트 root 경로
 //리액트 프로젝트 경로
-def webappDir = "../frontend"
-
-task appNpmInstall(type: NpmTask) {
-    workingDir = file("${webappDir}")
-    args = ["run", "build"]
-}
-task copyWebApp(type: Copy) {
-    from '../frontend/build'
-    into "$projectDir/src/main/resources/static"
-}
-copyWebApp.dependsOn(appNpmInstall)
-compileJava.dependsOn(copyWebApp)
+//def webappDir = "../frontend"
+//
+//task appNpmInstall(type: NpmTask) {
+//    workingDir = file("${webappDir}")
+//    args = ["run", "build"]
+//}
+//task copyWebApp(type: Copy) {
+//    from '../frontend/build'
+//    into "$projectDir/src/main/resources/static"
+//}
+//copyWebApp.dependsOn(appNpmInstall)
+//compileJava.dependsOn(copyWebApp)

@@ -32,10 +32,15 @@ class MapPage extends React.Component {
     this.sideBarOff = this.sideBarOff.bind(this);
   }
 
+  // 닫혀있을 때 마커만 클릭했을 때 장소정보만 sidebar...
+  ifOffSidebar = place => {
+    this.setState({ placeInfo: place });
+  };
+
   sideBarOn = place => {
     // console.log("MapPage", sidebarCheck);
     // this.setState({ docked: !this.state.docked });
-    console.log("sideBar", place);
+    // console.log("sideBar", place);
     this.setState({ docked: true, placeInfo: place });
   };
 
@@ -44,7 +49,12 @@ class MapPage extends React.Component {
   }
 
   render() {
-    const sidebar = <SidebarContent />;
+    const sidebar = (
+      <SidebarContent
+        places={this.props.location.state}
+        places2={this.state.placeInfo}
+      />
+    );
 
     const sidebarProps = {
       sidebar,
@@ -55,14 +65,18 @@ class MapPage extends React.Component {
       shadow: this.state.shadow,
       transitions: this.state.transitions,
       styles: styles,
-      placeInfo: this.state.placeInfo,
     };
 
     return (
       <Sidebar {...sidebarProps}>
         {/* <button onClick={this.toggleMenu}>Click me!</button> */}
         {/* <Map /> */}
-        <Map sideBarOn={this.sideBarOn} sideBarOff={this.sideBarOff} />
+        <Map
+          sideBarOn={this.sideBarOn}
+          sideBarOff={this.sideBarOff}
+          ifOffSidebar={this.ifOffSidebar}
+          places={this.props.location.state}
+        />
       </Sidebar>
     );
   }
