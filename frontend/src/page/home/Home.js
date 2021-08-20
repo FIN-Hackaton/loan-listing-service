@@ -1,15 +1,7 @@
-import React, { useState, Component } from "react";
-import { Input, Space } from "antd";
-import SearchOutlined from "@ant-design/icons/SearchOutlined";
+import React, { Component } from "react";
 import "./Home.css";
-import styled from "styled-components";
 import { test } from "../../util/APIUtils";
 import Alert from "react-s-alert";
-const { Search } = Input;
-
-const StyledInput = styled(Input)`
-  margin-top: 1rem;
-`;
 
 // 현재시간을 특정 format의 문자열로 반환
 const getCurrentTimetoString = () => {
