@@ -29,11 +29,15 @@ public class SearchContorller {
             Double lng = data.getLongitude();
             String jeonse = data.getJeonse();
             HashMap<Object,Object> test = new HashMap<Object, Object>();
+            HashMap<Object,Object> position = new HashMap<Object, Object>();
 //            test.add(id);
             test.put("name",name);
             test.put("lat",lat);
             test.put("lng",lng);
             test.put("jeonse",jeonse);
+            position.put("lat",lat);
+            position.put("lng",lng);
+            test.put("position",position);
 //            test.put("name",name);
 
 
