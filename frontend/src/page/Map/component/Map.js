@@ -35,7 +35,7 @@ class MapInfo extends Component {
     this.state = {
       docked: false,
       stores: [],
-      center: { lat: 37.3595704, lng: 127.105399 },
+      center: { lat: 37.518105, lng: 126.925223 },
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
