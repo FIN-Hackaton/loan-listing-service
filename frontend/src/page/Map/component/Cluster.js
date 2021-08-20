@@ -15,9 +15,7 @@ const evtNames = [
 
 const MarkerCluster = props => {
   const { map, google, markers } = props;
-  console.log(map);
   console.log(props);
-  console.log("cluster");
 
   const handleEvent = ({ event, marker, entry }) => {
     if (props[event]) {
@@ -64,7 +62,7 @@ const MarkerCluster = props => {
 
       // Cleanup function. Note, this is only returned if we create the markers
       return () => {
-        //console.log('Cleaning up markers')
+        console.log("Cleaning up markers");
         clusterer.clearMarkers();
       };
     }

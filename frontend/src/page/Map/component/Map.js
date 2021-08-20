@@ -5,7 +5,7 @@ import MarkerCluster from "./Cluster";
 import "./Map.css";
 
 // const HOME_PATH = window.HOME_PATH || ".";
-const places = [];
+var places = [];
 var newCenterLng, newCenterLat; // 매물들의 좌표 중앙값 구하기
 class MapInfo extends Component {
   constructor(props) {
@@ -65,7 +65,11 @@ class MapInfo extends Component {
   };
 
   displayMarkers = () => {
-    return <MarkerCluster markers={places} click={this.onMarkerClick} />;
+    return (
+      <MarkerCluster markers={places} click={this.onMarkerClick}>
+        {(places = [])}
+      </MarkerCluster>
+    );
   };
 
   onMapClicked = props => {
