@@ -53,6 +53,31 @@ export function signup(signupRequest) {
   });
 }
 
+const houseRequest = options => {
+  const headers = new Headers({
+    "Content-Type": "application/json",
+  });
+  const defaults = { headers: headers };
+  options = Object.assign({}, defaults, options);
+
+  return fetch(options.url, options).then(response =>
+    response.json().then(json => {
+      if (!response.ok) {
+        return Promise.reject(json);
+      }
+      return json;
+    })
+  );
+};
+
+export function getHouse(searchParameter) {
+  return houseRequest({
+    url: API_BASE_URL + "/search/house",
+    method: "POST",
+    body: JSON.stringify(searchParameter),
+  });
+}
+
 const testRequest = options => {
   const headers = new Headers({
     "Content-Type": "application/json",
@@ -72,7 +97,7 @@ const testRequest = options => {
 
 export function test(searchParameter) {
   return testRequest({
-    url: API_BASE_URL + "/search/house",
+    url: API_BASE_URL + "/sales/api/hello",
     method: "POST",
     body: JSON.stringify(searchParameter),
   });

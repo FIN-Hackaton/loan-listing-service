@@ -1,0 +1,144 @@
+import React, { useState, useEffect } from "react";
+import { Route, Link } from "react-router-dom";
+import {
+  RenderAfterNavermapsLoaded,
+  NaverMap,
+  Marker,
+  GroundOverlay,
+  Polygon,
+  Polyline,
+  Rectangle,
+} from "react-naver-maps"; // 패키지 불러오기
+import { withNavermaps } from "react-naver-maps/hocs";
+
+export default function MapPage() {
+  const cliendId = "drgyzrzre5";
+  return (
+    <div>
+      <RenderAfterNavermapsLoaded
+        ncpClientId={cliendId} // 자신의 네이버 계정에서 발급받은 Client ID
+        error={<p>Maps Load Error</p>}
+        loading={<p>Maps Loading...</p>}
+        submodules={["geocoder"]}
+      >
+        <NaverMapAPI />
+      </RenderAfterNavermapsLoaded>
+    </div>
+  );
+}
+
+function NaverMapAPI() {
+  const navermaps = window.naver.maps;
+
+  const mapTypes = navermaps.MapTypeId;
+  const [mapType, setMapType] = useState(mapTypes.NORMAL);
+
+  return (
+    <NaverMap
+      mapDivId={"maps-getting-started-uncontrolled"} // default: react-naver-map
+      style={{
+        width: "100%", // 네이버지도 가로 길이
+        height: "calc(100vh - 60px)", // 네이버지도 세로 길이
+      }}
+      defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)} // 지도 초기 위치
+      // center={{ lat: lat, lng: lng }} // 지도 위치 (동적으로 변경)
+      defaultZoom={13} // 지도 초기 확대 배율
+      mapTypeId={mapType}
+    >
+      <Buttons>
+        <ControlBtn
+          type="NORMAL"
+          controlOn={mapType === "normal"}
+          onClick={() => setMapType(mapTypes.NORMAL)}
+        >
+          일반지도
+        </ControlBtn>
+        <ControlBtn
+          type="TERRAIN"
+          //   controlOn={this.state.mapTypeId === navermaps.MapTypeId["TERRAIN"]}
+          controlOn={mapType === "terrain"}
+          onClick={() => setMapType(mapTypes.TERRAIN)}
+        >
+          지형도
+        </ControlBtn>
+        <ControlBtn
+          controlOn={mapType === "satellite"}
+          onClick={() => setMapType(mapTypes.SATELLITE)}
+        >
+          위성지도
+        </ControlBtn>
+        <ControlBtn
+          controlOn={mapType === "hybrid"}
+          onClick={() => setMapType(mapTypes.HYBRID)}
+        >
+          겹쳐보기
+        </ControlBtn>
+      </Buttons>
+
+      <Marker
+        position={new navermaps.LatLng(37.3595704, 127.105399)}
+        animation={navermaps.Animation.BOUNCE}
+        //   icon= {
+        //     navermaps.content= [
+        //                 '<div class="cs_mapbridge">',
+        //                     '<div class="map_group _map_group crs">',
+        //                         '<div class="map_marker _marker num1 num1_big"> ',
+        //                             '<span class="ico _icon"></span>',
+        //                             '<span class="shd"></span>',
+        //                         '</div>',
+        //                     '</div>',
+        //                 '</div>'
+        //             ].join(''),
+        //     navermaps.size= {new navermaps.Size(38, 58)},
+        //     anchor= {new navermaps.Point(19, 58)},
+        // }
+        title="매물1"
+        onClick={() => {
+          alert("여기는 네이버 입니다.");
+        }}
+      />
+    </NaverMap>
+  );
+}
+function ControlBtn({ controlOn = false, ...restProps }) {
+  let style = {
+    margin: 0,
+    color: "#555",
+    padding: "2px 6px",
+    background: "#fff",
+    border: "solid 1px #333",
+    cursor: "pointer",
+    borderRadius: "5px",
+    outline: "0 none",
+    boxShadow: "2px 2px 1px 1px rgba(0, 0, 0, 0.5)",
+    fontSize: "14px",
+    margin: "0 5px 5px 0",
+  };
+
+  if (controlOn) {
+    style = {
+      ...style,
+      background: "#2780E3",
+      color: "#FFF",
+    };
+  }
+
+  return <button style={style} {...restProps} />;
+}
+
+/**
+ * Buttons
+ * 예시에서는 생략되어있다. .buttons 에 해당한다.
+ */
+function Buttons(props) {
+  return (
+    <div
+      style={{
+        zIndex: 1000,
+        position: "absolute",
+        display: "inline-block",
+      }}
+      {...props}
+    />
+  );
+}

@@ -1,6 +1,6 @@
 import React, { useState, Component, useMemo } from "react";
 import "./Home.css";
-import { test } from "../../util/APIUtils";
+import { getHouse } from "../../util/APIUtils";
 import Alert from "react-s-alert";
 // import Select from "react-select";
 
@@ -65,7 +65,7 @@ class Home extends Component {
     });
 
     const searchParameter = Object.assign({}, this.state);
-    test(searchParameter)
+    getHouse(searchParameter)
       .then(response => {
         console.log(response);
         this.props.history.push({
