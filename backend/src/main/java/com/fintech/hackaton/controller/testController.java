@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @RequestMapping(value = "/sales", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -22,6 +19,8 @@ public class testController {
     @ResponseBody
     public HashMap<Object, Object> json(@RequestBody  HashMap<Object, Object> param){
         System.out.println("param : " + param);  //요청값
+
+
         HashMap<Object, Object> result = new HashMap<Object, Object>();  //리턴값
 
         List<Forsaleinfo> saleData = forsaleService.findAll();

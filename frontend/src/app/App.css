@@ -5,3 +5,7 @@
 .s-alert-close::before, .s-alert-close::after {
     width: 2px;
 }
+.app-body{
+    /* background-image: url( "../img/background.png"); */
+    background-color:#F2F7FF;
+}

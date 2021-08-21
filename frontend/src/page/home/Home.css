@@ -304,8 +304,8 @@
   
   transition: 0.5s;
 
-  --button-bg-color: #b6ffc7;
-  --button-hover-bg-color: #b6ffc7;
+  --button-bg-color: #bbd0ff;
+  --button-hover-bg-color: #bbd0ff;
 }
 
 .container input#search{
@@ -315,7 +315,7 @@
   border: none;
   font-size: 10pt;
   float: left;
-  color: #b6c9db;
+  color: #011324;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -336,7 +336,7 @@ select {
   padding: .8em .5em;
   border: 1px solid #999;
   font-family: inherit;
-  border-radius: 0px;
+  border-radius: 100px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -345,3 +345,7 @@ select {
 /* .area1{
   size: 10px;
 } */
+
+.a {
+  background-image: url( "../../img/background.png") no-repeat;
+}

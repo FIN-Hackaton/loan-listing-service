@@ -19,6 +19,8 @@ public class SearchContorller {
     @ResponseBody
     public HashMap<Object, Object> json(@RequestBody HashMap<Object, Object> param) {
         System.out.println("param : " + param);  //요청값
+        String getName = (String) param.get("sel_area1");
+        System.out.println("select param : " + getName);
         HashMap<Object, Object> result = new HashMap<Object, Object>();  //리턴값
 
         List<Forsaleinfo> saleData = forsaleService.findAll();
