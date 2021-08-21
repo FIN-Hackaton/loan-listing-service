@@ -20,6 +20,7 @@ class MapInfo extends Component {
     // console.log(this.props);
     // DB로부터 받은 매물 정보 사용가능하게 변환
     const placeLists = this.props.places.lists;
+    // console.log(placeLists);
     var leftTop = { lat: 37.3595704, lng: 127.105399 };
     var rightBottom = { lat: 37.3595704, lng: 127.105399 };
     var maxLat = 0;
@@ -27,20 +28,26 @@ class MapInfo extends Component {
 
     for (var key in placeLists) {
       places.push(placeLists[key]);
-
       // 매물들의 좌표 중앙값 구하기
-      if (placeLists[key].lat > maxLat) {
-        maxLat = placeLists[key].lat;
-        leftTop = { lat: placeLists[key].lat, lng: placeLists[key].lng };
+      if (placeLists[key].position.lat > maxLat) {
+        maxLat = placeLists[key].position.lat;
+        leftTop = {
+          lat: placeLists[key].position.lat,
+          lng: placeLists[key].position.lng,
+        };
       }
-      if (placeLists[key].lng > maxLng) {
-        maxLng = placeLists[key].lng;
-        rightBottom = { lat: placeLists[key].lat, lng: placeLists[key].lng };
+      if (placeLists[key].position.lng > maxLng) {
+        maxLng = placeLists[key].position.lng;
+        rightBottom = {
+          lat: placeLists[key].position.lat,
+          lng: placeLists[key].position.lng,
+        };
       }
     }
+
     newCenterLat = (leftTop.lat + rightBottom.lat) / 2;
     newCenterLng = (leftTop.lng + rightBottom.lng) / 2;
-    // console.log(newCenterLat, newCenterLng);
+    console.log(newCenterLat, newCenterLng);
   }
 
   onMarkerClick = props => {
@@ -89,9 +96,12 @@ class MapInfo extends Component {
         visible={this.state.showingInfoWindow}
       >
         <div>
-          <h3>{this.state.selectedPlace.name}</h3>
-          <p>정보1</p>
-          <p>정보2</p>
+          <h3>
+            {this.state.selectedPlace.name} {this.state.selectedPlace.dong}
+          </h3>
+          <p>
+            {this.state.selectedPlace.rentMy}: {this.state.selectedPlace.price}
+          </p>
           <button
             type="button"
             onClick={() => {

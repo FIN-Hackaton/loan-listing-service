@@ -15,7 +15,7 @@ const evtNames = [
 
 const MarkerCluster = props => {
   const { map, google, markers } = props;
-  console.log(props);
+  // console.log(props);
 
   const handleEvent = ({ event, marker, entry }) => {
     if (props[event]) {
@@ -34,6 +34,9 @@ const MarkerCluster = props => {
   useEffect(() => {
     if (map && markers) {
       const mapMarkers = markers.map(marker => {
+        // console.log(marker);
+        var label_text = marker.price;
+        // console.log(label_text);
         const entry = new google.maps.Marker({
           position: {
             lat: marker.position.lat,
@@ -41,6 +44,15 @@ const MarkerCluster = props => {
           },
           map: map,
           name: marker.name,
+          icon: "/static/map.png",
+
+          label: {
+            // content: "A",
+            text: label_text,
+            color: "#ffffff",
+            fontSize: "15px",
+            // fontWeight: "bold",
+          },
         });
 
         evtNames.forEach(e => {

@@ -62,6 +62,7 @@ const houseRequest = options => {
 
   return fetch(options.url, options).then(response =>
     response.json().then(json => {
+      // console.log(json);
       if (!response.ok) {
         return Promise.reject(json);
       }
@@ -99,6 +100,7 @@ export function test(searchParameter) {
   return testRequest({
     url: API_BASE_URL + "/sales/api/hello",
     method: "POST",
+
     body: JSON.stringify(searchParameter),
   });
 }

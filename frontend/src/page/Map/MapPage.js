@@ -30,6 +30,8 @@ class MapPage extends React.Component {
 
     this.sideBarOn = this.sideBarOn.bind(this);
     this.sideBarOff = this.sideBarOff.bind(this);
+
+    // console.log(this.props.location.state);
   }
 
   // 닫혀있을 때 마커만 클릭했을 때 장소정보만 sidebar...
@@ -49,6 +51,8 @@ class MapPage extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
+    // console.log(this.state.placeInfo);
     const sidebar = (
       <SidebarContent
         places={this.props.location.state}

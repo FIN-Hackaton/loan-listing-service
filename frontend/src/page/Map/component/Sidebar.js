@@ -26,10 +26,6 @@ const styles = {
 
 const Sidebar = props => {
   console.log(props);
-  const name = props.places2.name;
-  const jeonse = props.places2.jeonse;
-  const lat = props.places2.lat;
-  const lng = props.places2.lng;
 
   const style = props.style
     ? { ...styles.sidebar, ...props.style }
@@ -45,21 +41,40 @@ const Sidebar = props => {
     );
   }
 
+  if (props.places2) {
+    var name = props.places2.name;
+    var name_dong = props.places2.dong;
+    var floor = props.places2.floor;
+    var price = props.places2.price;
+    var space = props.places2.space;
+
+    var city = props.places2.addrCity;
+    var dong = props.places2.addrDong;
+    var gu = props.places2.addrgu;
+
+    var estateName = props.places2.estateName;
+  }
+
   return (
     <div style={styles.content}>
       <h1>매물 상세정보</h1>
-      <p>이름: {name}</p>
-      <p>가격: {jeonse}</p>
+      <p>
+        이름: {name} {name_dong}
+      </p>
+      <p>층수: {floor}</p>
+      <p>면적: {space}</p>
+      <p>가격: {price}</p>
       <span>
-        위치: {lat} {lng}
+        위치: {city} {dong} {gu}
       </span>
       <br />
-      <span>공인중개사명:A </span>
-      <span>전화번호:A</span>
+      <span>공인중개사명: {estateName} </span>
+      {/* <span>전화번호:A</span> */}
       <div style={styles.divider} />
 
       {/* <a href="index.html" style={styles.sidebarLink}></a> */}
-      <h3>대출 추천상품</h3>
+      <h2>대출 추천상품</h2>
+      <button>물음표</button>
       {links}
     </div>
   );
