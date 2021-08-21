@@ -1,53 +1,91 @@
 package com.fintech.hackaton.controller;
 
 
-import com.fintech.hackaton.model.Forsaleinfo;
-import com.fintech.hackaton.service.ForsaleService;
+import com.fintech.hackaton.model.House;
+import com.fintech.hackaton.service.HouseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @RequestMapping(value = "/search", produces = {MediaType.APPLICATION_JSON_VALUE})
 @RestController
 public class SearchContorller {
-    final ForsaleService forsaleService;
+    final HouseService houseService;
 
     @PostMapping("/house")
     @ResponseBody
     public HashMap<Object, Object> json(@RequestBody HashMap<Object, Object> param) {
-        System.out.println("param : " + param);  //요청값
-        String getName = (String) param.get("sel_area1");
-        System.out.println("select param : " + getName);
+//        System.out.println("param : " + param);  //요청값
         HashMap<Object, Object> result = new HashMap<Object, Object>();  //리턴값
 
-        List<Forsaleinfo> saleData = forsaleService.findAll();
-        for (Forsaleinfo data : saleData) {
-            Long id = data.getId();
-            String name = data.getName();
-            Double lat = data.getLatitude();
-            Double lng = data.getLongitude();
-            String jeonse = data.getJeonse();
-            HashMap<Object,Object> test = new HashMap<Object, Object>();
-            HashMap<Object,Object> position = new HashMap<Object, Object>();
-//            test.add(id);
-            test.put("name",name);
-            test.put("lat",lat);
-            test.put("lng",lng);
-            test.put("jeonse",jeonse);
-            position.put("lat",lat);
-            position.put("lng",lng);
-            test.put("position",position);
-//            test.put("name",name);
+        String dbCity = (String) param.get("sel_area1");
+        String dbGu = (String) param.get("sel_area2");
+        String dbDong = (String) param.get("sel_area3");
+        String dbInterest = (String) param.get("interest");
+        String dbCredit = (String) param.get("credit");
+        String dbLoan = (String) param.get("loan_period");
 
+//        System.out.println(dbCity);
+//        System.out.println(dbGu);
+//        System.out.println(dbDong);
+//        System.out.println(dbInterest);
+//        System.out.println(dbCredit);`
+//        System.out.println(dbLoan);
 
-            result.put(id, test);
+        List<House> houseData = new ArrayList<>();
+        if ((Objects.equals(dbDong, "")) && (Objects.equals(dbGu, ""))) { // 서울특별시 전부
+            houseData = houseService.houseFindAll();
+        } else if (Objects.equals(dbDong, "")) {
+            houseData = houseService.houseFindGu(dbGu);
+        } else {
+            houseData = houseService.houseFindCity(dbGu, dbDong);
         }
-        //Optional<Forsaleinfo> sale = forsaleService.findByName(name);
 
-//        result.put("RESULT", "OK");
+        for (House data : houseData) {
+            Long id = data.getNo();
+            String aptName = data.getAtclnm();
+            String aptDong = data.getBildnm();
+            String aptFloor = data.getFlrinfo();
+            String aptPrice = data.getHandprc();
+            String aptSpace = data.getSpc1();
+            Double lat = Double.valueOf(data.getLat());
+            Double lng = Double.valueOf(data.getLng());
+            String addrCity = data.getAddrcity();
+            String addrgu = data.getAddrgu();
+            String addrDong = data.getAddrdong();
+            String estateName = data.getRltrnm();
+            String rentmy = data.getTradtpnm();
+
+
+            HashMap<Object, Object> aptInfo = new HashMap<Object, Object>();
+            HashMap<Object, Object> position = new HashMap<Object, Object>();
+
+            aptInfo.put("name", aptName);
+            aptInfo.put("dong", aptDong);
+            aptInfo.put("floor", aptFloor);
+            aptInfo.put("price", aptPrice);
+            aptInfo.put("space", aptSpace);
+            aptInfo.put("addrCity", addrCity);
+            aptInfo.put("addrgu", addrgu);
+            aptInfo.put("addrDong", addrDong);
+            aptInfo.put("estateName", estateName);
+            aptInfo.put("rentMy", rentmy);
+            position.put("lat", lat);
+            position.put("lng", lng);
+            aptInfo.put("position", position);
+
+
+            result.put(id, aptInfo);
+//            System.out.println(id);
+//            System.out.println(result);
+        }
+//        System.out.println(result);
         return result;
     }
 
