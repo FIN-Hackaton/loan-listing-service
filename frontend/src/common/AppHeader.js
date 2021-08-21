@@ -9,16 +9,17 @@ class AppHeader extends Component {
         <div className="container">
           <div className="app-branding">
             <Link to="/" className="app-title">
-              Fintech-Hackaton
+            <img class="fit-picture" src="logo.png"></img> 
             </Link>
+
           </div>
           <div className="app-options">
             <nav className="app-nav">
               {this.props.authenticated ? (
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/map">Map(임시테스트용)</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/profile">Profile</NavLink>
                   </li>
@@ -30,9 +31,9 @@ class AppHeader extends Component {
                 </ul>
               ) : (
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/map">Map(임시테스트용)</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/login">Login</NavLink>
                   </li>

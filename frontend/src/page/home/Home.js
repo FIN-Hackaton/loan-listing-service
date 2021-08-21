@@ -3,6 +3,7 @@ import "./Home.css";
 import { getHouse } from "../../util/APIUtils";
 import Alert from "react-s-alert";
 // import Select from "react-select";
+// import Background from '../../../img/background.png';
 
 // 현재시간을 특정 format의 문자열로 반환
 const getCurrentTimetoString = () => {
@@ -10,6 +11,12 @@ const getCurrentTimetoString = () => {
 };
 
 const CustomOption = ({ innerProps }) => <option {...innerProps}></option>;
+
+// var sectionStyle = {
+//   width: "100%",
+//   height: "400px",
+//   backgroundImage: "url(" + { Background } + ")"
+// };
 
 class Home extends Component {
   constructor(props) {
@@ -60,6 +67,7 @@ class Home extends Component {
       sel_area1: "서울특별시",
       sel_area2: "",
       sel_area3: "",
+
     });
 
     const searchParameter = Object.assign({}, this.state);
@@ -87,6 +95,7 @@ class Home extends Component {
   handleChange2(event) {
     this.setState({ sel_area2: event.target.value });
     if (event.target.value == "강남구") {
+
       this.state.sel1 = "개포동";
       this.state.sel2 = "논현동";
       this.state.sel3 = "대치동";
@@ -101,6 +110,7 @@ class Home extends Component {
       this.state.sel12 = "일원동";
       this.state.sel13 = "자곡동";
       this.state.sel14 = "첨당동";
+
     } else if (event.target.value == "강동구") {
       this.state.sel1 = "강일동";
       this.state.sel2 = "상일동";
@@ -116,7 +126,9 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "강북구") {
+
       this.state.sel1 = "미아동";
       this.state.sel2 = "번동";
       this.state.sel3 = "수유동";
@@ -131,7 +143,9 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "강서구") {
+
       this.state.sel1 = "가양동";
       this.state.sel2 = "개화동";
       this.state.sel3 = "공항동";
@@ -146,7 +160,9 @@ class Home extends Component {
       this.state.sel12 = "외발산동";
       this.state.sel13 = "화곡동";
       this.state.sel14 = "";
+
     } else if (event.target.value == "관악구") {
+
       this.state.sel1 = "남현동";
       this.state.sel2 = "봉천동";
       this.state.sel3 = "신림동";
@@ -161,6 +177,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "광진구") {
       this.state.sel1 = "광장동";
       this.state.sel2 = "구의동";
@@ -176,6 +193,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "구로구") {
       this.state.sel1 = "가리봉동";
       this.state.sel2 = "개봉동";
@@ -191,6 +209,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "금천구") {
       this.state.sel1 = "가산동";
       this.state.sel2 = "독산동";
@@ -206,6 +225,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "노원구") {
       this.state.sel1 = "공릉동";
       this.state.sel2 = "상계동";
@@ -221,6 +241,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "도봉구") {
       this.state.sel1 = "도봉동";
       this.state.sel2 = "방학동";
@@ -236,6 +257,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "동대문구") {
       this.state.sel1 = "답십리동";
       this.state.sel2 = "신설동";
@@ -251,6 +273,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "동작구") {
       this.state.sel1 = "노량진동";
       this.state.sel2 = "대방동";
@@ -266,6 +289,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "마포구") {
       this.state.sel1 = "공덕동";
       this.state.sel2 = "구수동";
@@ -293,6 +317,7 @@ class Home extends Component {
       this.state.sel24 = "하중동";
       this.state.sel25 = "합정동";
       this.state.sel26 = "현석동";
+
     } else if (event.target.value == "서대문구") {
       this.state.sel1 = "남가좌동";
       this.state.sel2 = "냉청동";
@@ -314,6 +339,7 @@ class Home extends Component {
       this.state.sel18 = "현저동";
       this.state.sel19 = "홍은동";
       this.state.sel20 = "홍제동";
+
     } else if (event.target.value == "서초구") {
       this.state.sel1 = "내곡동";
       this.state.sel2 = "반포동";
@@ -329,6 +355,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "성동구") {
       this.state.sel1 = "금호동";
       this.state.sel2 = "도선동";
@@ -344,6 +371,7 @@ class Home extends Component {
       this.state.sel12 = "홍익동";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "성북구") {
       this.state.sel1 = "길음동";
       this.state.sel2 = "돈암동";
@@ -359,6 +387,7 @@ class Home extends Component {
       this.state.sel12 = "정릉동";
       this.state.sel13 = "종암동";
       this.state.sel14 = "하월곡동";
+
     } else if (event.target.value == "송파구") {
       this.state.sel1 = "가락동";
       this.state.sel2 = "거여동";
@@ -374,6 +403,7 @@ class Home extends Component {
       this.state.sel12 = "장지동";
       this.state.sel13 = "풍납동";
       this.state.sel14 = "";
+
     } else if (event.target.value == "양천구") {
       this.state.sel1 = "목동";
       this.state.sel2 = "신월동";
@@ -389,6 +419,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "영등포구") {
       this.state.sel1 = "당산동";
       this.state.sel2 = "대림동";
@@ -404,6 +435,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "용산구") {
       this.state.sel1 = "갈월동";
       this.state.sel2 = "남영동";
@@ -429,6 +461,7 @@ class Home extends Component {
       this.state.sel22 = "한남동";
       this.state.sel23 = "효창동";
       this.state.sel24 = "후암동";
+
     } else if (event.target.value == "은평구") {
       this.state.sel1 = "갈현동";
       this.state.sel2 = "구산동";
@@ -444,6 +477,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "종로구") {
       this.state.sel1 = "청운효자동";
       this.state.sel2 = "사직동";
@@ -459,6 +493,7 @@ class Home extends Component {
       this.state.sel12 = "";
       this.state.sel13 = "";
       this.state.sel14 = "";
+
     } else if (event.target.value == "중구") {
       this.state.sel1 = "소공동";
       this.state.sel2 = "회현동";
@@ -474,6 +509,7 @@ class Home extends Component {
       this.state.sel12 = "신당5동";
       this.state.sel13 = "동화동";
       this.state.sel14 = "황학동";
+
     } else if (event.target.value == "중랑구") {
       this.state.sel1 = "망우동";
       this.state.sel2 = "면목동";
@@ -512,9 +548,10 @@ class Home extends Component {
 
   render() {
     return (
+      <div class="a">
       <div className="home-container">
         <div className="container">
-          <div className="graf-bg-container">
+          {/* <div className="graf-bg-container">
             <div className="graf-layout">
               <div className="graf-circle"></div>
               <div className="graf-circle"></div>
@@ -528,21 +565,23 @@ class Home extends Component {
               <div className="graf-circle"></div>
               <div className="graf-circle"></div>
             </div>
+
           </div>
           <h1 className="home-title">Fintech-Hackaton </h1>
 
           <p className="search-title">
-            월 부담 가능 이자
+            본인 자산
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
             대출 기간
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            개인 신용 등급
+            월 부담 가능 이자
           </p>
           <form onSubmit={this.submit}>
             <div class="container">
               <input
                 id="search"
-                placeholder="월 부담 가능 이자 "
+                placeholder="본인 자산 "
                 type="number"
                 name="interest"
                 value={this.state.interest}
@@ -550,19 +589,20 @@ class Home extends Component {
               />
               <input
                 id="search"
-                placeholder="대출 기간 "
+                placeholder="대출 희망 금액 "
                 name="loan_period"
                 value={this.state.loan_period}
                 onChange={this.changeInput}
               />
               <input
                 id="search"
-                placeholder="신용 점수 "
+                placeholder="월 부담 가능 이자 "
                 name="credit"
                 value={this.state.credit}
                 onChange={this.changeInput}
               />
             </div>
+
 
             <br />
             <br />
@@ -667,17 +707,24 @@ class Home extends Component {
             {/* <input type="submit" value="검색" /> */}
             {/* </form> */}
 
-            <button id="searchbtn" type="submit">
+
+            {/* <button id="searchbtn" type="submit">
               검색
-            </button>
+            </button> */}
+              <button id="searchbtn" type="submit">
+               <img name="search" src="/search.png"></img>
+             </button>
             <div>
               {this.state.interest} {this.state.loan_period} {this.state.credit}{" "}
               {this.state.sel_area1} {this.state.sel_area2}{" "}
               {this.state.sel_area3}
             </div>
           </form>
+
         </div>
       </div>
+      </div>
+
     );
   }
 }
