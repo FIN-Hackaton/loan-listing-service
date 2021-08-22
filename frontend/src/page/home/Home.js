@@ -566,16 +566,16 @@ class Home extends Component {
       </section> */}
             {/* <h1 className="home-title">여기저기에 흩어진 정보를 여기저기에서 찾아보세요 </h1>  */}
             <img class="fit-picture" src="ment.png" />
-
-            <p className="search-title">
-              본인 자산
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              대출 희망 금액
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              월 부담 가능 이자
-            </p>
             <form onSubmit={this.submit}>
+            <div class="fullcontainer">
+              
+            <div className="search-title">
+              <span className = "span-text">본인 자산</span>
+              <span className = "span-text">대출 희망 금액</span>
+              <span className = "span-text">월 부담 가능 이자</span>
+            </div>
               <div class="container">
+                
                 <input
                   id="search"
                   placeholder="본인 자산 "
@@ -584,6 +584,9 @@ class Home extends Component {
                   value={this.state.interest}
                   onChange={this.changeInput}
                 />
+                </div>
+                <div class="container">     
+                     
                 <input
                   id="search"
                   placeholder="대출 희망 금액 "
@@ -591,6 +594,8 @@ class Home extends Component {
                   value={this.state.loan_period}
                   onChange={this.changeInput}
                 />
+                </div>
+                <div class="container">
                 <input
                   id="search"
                   placeholder="월 부담 가능 이자 "
@@ -599,7 +604,7 @@ class Home extends Component {
                   onChange={this.changeInput}
                 />
               </div>
-
+            </div>
               <br />
               <br />
               <br />

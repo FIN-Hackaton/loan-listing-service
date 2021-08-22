@@ -30,6 +30,7 @@ class Signup extends Component {
     }
 
     return (
+      <div className="signup-page">
       <div className="signup-container">
         <div className="signup-content">
           <h1 className="signup-title">Signup with 애플리케이션이름</h1>
@@ -42,6 +43,7 @@ class Signup extends Component {
             Already have an account? <Link to="/login">Login!</Link>
           </span>
         </div>
+      </div>
       </div>
     );
   }

@@ -274,8 +274,9 @@
     opacity: 0;
   }
 }
-
+/*검색버튼*/
 #searchbtn {
+  position:relative;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -307,23 +308,33 @@
   --button-bg-color: #bbd0ff;
   --button-hover-bg-color: #bbd0ff;
 }
-
+.fullcontainer{
+  width: 50%;
+  height:14%;
+  position: absolute;
+  left:25%;
+}
+.span-text{
+  margin :9%
+}
+/*input 본인 자산*/
 .container input#search{
-  width: 200px;
+  width: 20%;
   height: 40px;
+  position: relative;
   background: #d1e4fa;
   border: none;
   font-size: 10pt;
-  float: left;
   color: #011324;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  margin-left:150px;
+  display: inline-block;
+  border-radius: 2%;
+  margin-left:10%;  
+  float: left;
+
 }
 
 .container .icon{
-  position: absolute;
+  position: relative;
   top: 50%;
   margin-left: 17px;
   margin-top: 17px;
@@ -332,7 +343,9 @@
 }
 
 select {
-  width: 200px;
+  margin-top: 5%;
+  width: 20%;
+  position : relative;
   padding: .8em .5em;
   border: 1px solid #999;
   font-family: inherit;

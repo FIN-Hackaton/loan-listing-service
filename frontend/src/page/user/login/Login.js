@@ -19,7 +19,7 @@ import Alert from "react-s-alert";
 
 class Login extends Component {
   componentDidMount() {
-    // If the OAuth2 login encounters an error, the user is redirected to the /login page with an error.
+    // If the OAuth2 login encounters an error, d1e4fathe user is redirected to the /login page with an error.
     // Here we display the error and then remove the error query parameter from the location.
     if (this.props.location.state && this.props.location.state.error) {
       setTimeout(() => {
@@ -47,6 +47,7 @@ class Login extends Component {
     }
 
     return (
+      <div className="login-page">
       <div className="login-container">
         <div className="login-content">
           <h1 className="login-title">Login to 애플리케이션이름</h1>
@@ -59,6 +60,7 @@ class Login extends Component {
             New user? <Link to="/signup">Sign up!</Link>
           </span>
         </div>
+      </div>
       </div>
     );
   }
