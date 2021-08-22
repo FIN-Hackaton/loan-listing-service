@@ -36,3 +36,23 @@
   user-select: none;
   transform: translate(-50%, -90%);
 } */
+
+.detail_btn{
+  display: inline-block;
+  padding: 1em 2em;
+  border-radius: 0;
+  color: #7b73c5;
+  margin-top:2rem;
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+background: linear-gradient(to right, rgba(#7b73c5, 0) 25%, rgba(#7b73c5, .8) 75%);
+background-position: 1% 50%;
+background-size: 400% 300%;
+border: 1px solid #7b73c5;
+background-color: #e0dcff;
+
+
+}

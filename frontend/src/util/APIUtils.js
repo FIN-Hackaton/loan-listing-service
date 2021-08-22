@@ -63,7 +63,7 @@ const houseRequest = options => {
 
   return fetch(options.url, options).then(response =>
     response.json().then(json => {
-      // console.log(json);
+      console.log(json);
       if (!response.ok) {
         return Promise.reject(json);
       }
@@ -78,6 +78,34 @@ export function getHouse(searchParameter) {
     method: "POST",
     encoding: "euc-kr",
     body: JSON.stringify(searchParameter),
+  });
+}
+
+const subwayRequest = options => {
+  const headers = new Headers({
+    "Content-Type": "application/json",
+    "encoding": "euc-kr",
+  });
+  const defaults = { headers: headers };
+  options = Object.assign({}, defaults, options);
+
+  return fetch(options.url, options).then(response =>
+    response.json().then(json => {
+      // console.log(json);
+      if (!response.ok) {
+        return Promise.reject(json);
+      }
+      return json;
+    })
+  );
+};
+
+export function getSubway(searchSubwayParam) {
+  return subwayRequest({
+    url: API_BASE_URL + "/search/subway",
+    method: "POST",
+    encoding: "euc-kr",
+    body: JSON.stringify(searchSubwayParam),
   });
 }
 

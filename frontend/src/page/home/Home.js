@@ -81,7 +81,7 @@ class Home extends Component {
       .catch(error => {
         Alert.error(
           (error && error.message) ||
-            "Oops! Something went wrong. Please try again!"
+          "Oops! Something went wrong. Please try again!"
         );
       });
   };
@@ -565,13 +565,20 @@ class Home extends Component {
             {/* <section style={ sectionStyle }>
       </section> */}
             {/* <h1 className="home-title">여기저기에 흩어진 정보를 여기저기에서 찾아보세요 </h1>  */}
+            <br />
             <img class="fit-picture" src="ment.png" />
+            <br />
+            <br />
+            <br />
             <form onSubmit={this.submit}>
+
               <div class="fullcontainer">
+
                 <div className="search-title">
                   <span className="span-text">본인 자산</span>
                   <span className="span-text">대출 희망 금액</span>
                   <span className="span-text">월 부담 가능 이자</span>
+
                 </div>
                 <div class="container">
                   <input
@@ -738,7 +745,7 @@ class Home extends Component {
             </form>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

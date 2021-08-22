@@ -133,9 +133,13 @@ const Sidebar = props => {
 
       {/* <a href="index.html" style={styles.sidebarLink}></a> */}
       <h2>대출 추천상품</h2>
+
       <button>물음표</button>
-      {/* {links} */}
+      <button><img src="help.png"></img></button>
       {rendering()}
+
+   
+
     </div>
   );
 };

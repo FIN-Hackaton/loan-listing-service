@@ -47,4 +47,5 @@ public interface HouseRepository extends JpaRepository<House, Long> {
     @Query(value = "SELECT * FROM home h WHERE h.addrgu = ?1 and h.addrdong = ?2 and h.credit <=?3", nativeQuery = true)
     List<House> findHouseByCityCredit(String gu, String dong, Integer price);
 
+
 }
