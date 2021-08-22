@@ -567,44 +567,41 @@ class Home extends Component {
             {/* <h1 className="home-title">여기저기에 흩어진 정보를 여기저기에서 찾아보세요 </h1>  */}
             <img class="fit-picture" src="ment.png" />
             <form onSubmit={this.submit}>
-            <div class="fullcontainer">
-              
-            <div className="search-title">
-              <span className = "span-text">본인 자산</span>
-              <span className = "span-text">대출 희망 금액</span>
-              <span className = "span-text">월 부담 가능 이자</span>
-            </div>
-              <div class="container">
-                
-                <input
-                  id="search"
-                  placeholder="본인 자산 "
-                  type="number"
-                  name="interest"
-                  value={this.state.interest}
-                  onChange={this.changeInput}
-                />
-                </div>
-                <div class="container">     
-                     
-                <input
-                  id="search"
-                  placeholder="대출 희망 금액 "
-                  name="loan_period"
-                  value={this.state.loan_period}
-                  onChange={this.changeInput}
-                />
+              <div class="fullcontainer">
+                <div className="search-title">
+                  <span className="span-text">본인 자산</span>
+                  <span className="span-text">대출 희망 금액</span>
+                  <span className="span-text">월 부담 가능 이자</span>
                 </div>
                 <div class="container">
-                <input
-                  id="search"
-                  placeholder="월 부담 가능 이자 "
-                  name="credit"
-                  value={this.state.credit}
-                  onChange={this.changeInput}
-                />
+                  <input
+                    id="search"
+                    placeholder="본인 자산 "
+                    type="number"
+                    name="credit"
+                    value={this.state.credit}
+                    onChange={this.changeInput}
+                  />
+                </div>
+                <div class="container">
+                  <input
+                    id="search"
+                    placeholder="대출 희망 금액 "
+                    name="loan_period"
+                    value={this.state.loan_period}
+                    onChange={this.changeInput}
+                  />
+                </div>
+                <div class="container">
+                  <input
+                    id="search"
+                    placeholder="월 부담 가능 이자 "
+                    name="interest"
+                    value={this.state.interest}
+                    onChange={this.changeInput}
+                  />
+                </div>
               </div>
-            </div>
               <br />
               <br />
               <br />

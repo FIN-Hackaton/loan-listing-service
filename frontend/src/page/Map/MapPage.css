@@ -1,17 +1,40 @@
-/* 콘텐츠 영역 */
-#components-layout-demo-top-side-2 .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
+.nav_user ul li em {
+  line-height: 60px;
+  vertical-align: middle;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.item-line ul li em.active {
+  color: #0f96f6;
 }
 
-.ant-row-rtl #components-layout-demo-top-side-2 .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
+.nav_user ul {
+  list-style-position: none;
+  margin: 0;
+  padding: 0;
+}
+.nav_user {
+  padding-left: 15%;
+}
+.nav_user ul li {
+  list-style-type: none;
+  display: inline-block;
 }
 
-.site-layout-background {
-  background: #fff;
+.nav_user ul li a {
+  display: inline-block;
+  line-height: 60px;
+  vertical-align: middle;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.nav_user ul li a:hover {
+  color: #0f96f6;
+}
+
+.nav ul li a.active {
+  color: #0f96f6;
 }

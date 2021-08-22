@@ -130,7 +130,7 @@ class MapInfo extends Component {
           style={mapStyles}
           initialCenter={{ lat: newCenterLat, lng: newCenterLng }}
           onClick={this.onMapClicked}
-          streetViewControl={false}
+          streetViewControl={true}
           fullscreenControl={false}
           scaleControl={true}
           mapTypeControl={true}

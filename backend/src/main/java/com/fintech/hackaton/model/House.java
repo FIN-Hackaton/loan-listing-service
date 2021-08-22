@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "homeTest2")
+@Entity(name = "home")
 public class House {
 
     @Id // Primary Key

@@ -2,6 +2,7 @@ import React from "react";
 import Map from "./component/Map.js";
 import Sidebar from "react-sidebar";
 import SidebarContent from "./component/Sidebar.js";
+import "./MapPage.css";
 
 const styles = {
   content: {
@@ -73,7 +74,22 @@ class MapPage extends React.Component {
 
     return (
       <Sidebar {...sidebarProps}>
-        {/* <button onClick={this.toggleMenu}>Click me!</button> */}
+        <div class="nav_user" role="tablist">
+          <ul>
+            <li class="item_line">
+              <a>매매</a>
+            </li>
+            <li class="item_line">
+              <a>전세</a>
+            </li>
+            <li class="item_line">
+              <a>월세</a>
+            </li>
+            <li class="item_line">
+              <a>지하철</a>
+            </li>
+          </ul>
+        </div>
         {/* <Map /> */}
         <Map
           sideBarOn={this.sideBarOn}
