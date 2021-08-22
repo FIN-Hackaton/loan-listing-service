@@ -576,8 +576,8 @@ class Home extends Component {
               </div>
               <label>
                 <div className="container">
-                  <div class="images-container">
-                    <div class="image-container">
+                  <div class="select-picture">
+                    <div class="select-picture">
                       <img class="select-picture" src="jasan.png" alt="" />
                       <select
                         name="credit"

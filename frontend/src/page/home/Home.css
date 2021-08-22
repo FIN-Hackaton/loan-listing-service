@@ -374,14 +374,4 @@ select {
 }
 
 .select-area {
-  position: relative;
-  -webkit-appearance: none;
-  appearance: none;
-  /* margin-top: 10px; */
-  padding: 0 1rem;
-  padding-top: 30px;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  width: auto;
 }

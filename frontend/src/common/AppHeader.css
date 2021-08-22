@@ -5,7 +5,7 @@
 }
 
 .app-title {
-  line-height: 60px;
+  /* line-height: 60px; */
   vertical-align: middle;
   font-size: 1.35em;
 }
@@ -48,4 +48,5 @@
 
 .fit-picture {
   margin-top: 14px;
+  /* position: relative; */
 }
