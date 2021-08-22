@@ -20,3 +20,4 @@ out/
 
 application.yml
 src/main/resources/static/
+backend/bin/

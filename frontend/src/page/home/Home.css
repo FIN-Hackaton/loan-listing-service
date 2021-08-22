@@ -317,21 +317,7 @@
 .span-text{
   margin :9%
 }
-/*input 본인 자산*/
-.container input#search{
-  width: 20%;
-  height: 40px;
-  position: relative;
-  background: #d1e4fa;
-  border: none;
-  font-size: 10pt;
-  color: #011324;
-  display: inline-block;
-  border-radius: 2%;
-  margin-left:10%;  
-  float: left;
 
-}
 
 .container .icon{
   position: relative;
@@ -349,10 +335,7 @@ select {
   padding: .8em .5em;
   border: 1px solid #999;
   font-family: inherit;
-  border-radius: 100px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  border-radius: 100px
 }
 
 /* .area1{
@@ -361,4 +344,14 @@ select {
 
 .a {
   background-image: url( "../../img/background.png") no-repeat;
+}
+
+.container input#search{
+  margin-top: 5%;
+  width: 20%;
+  position : relative;
+  padding: .8em .5em;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 0px
 }

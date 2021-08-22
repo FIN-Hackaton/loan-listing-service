@@ -3,6 +3,8 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import InfoWindowEx from "./InfoWindowEx.js";
 import MarkerCluster from "./Cluster";
 import "./Map.css";
+import { getSubway } from "../../../util/APIUtils";
+import Alert from "react-s-alert";
 
 // const HOME_PATH = window.HOME_PATH || ".";
 var places = [];
@@ -20,6 +22,7 @@ class MapInfo extends Component {
     // console.log(this.props);
     // DB로부터 받은 매물 정보 사용가능하게 변환
     const placeLists = this.props.places.lists;
+    // const placeLists = [];
     // console.log(placeLists);
     var leftTop = { lat: 37.3595704, lng: 127.105399 };
     var rightBottom = { lat: 37.3595704, lng: 127.105399 };
@@ -103,16 +106,48 @@ class MapInfo extends Component {
             {this.state.selectedPlace.rentMy}: {this.state.selectedPlace.price}
           </p>
           <button
+            class="detail_btn"
             type="button"
             onClick={() => {
               this.props.sideBarOn(this.state.selectedPlace);
             }}
           >
-            Show details
+           상세정보
+            
           </button>
         </div>
       </InfoWindowEx>
     );
+  };
+
+  submit = event => {
+    // form의 submit의 효과로 발생하는 페이지 리로딩 방지
+    // 페이지 리로딩이 발생하면 state값이 초기화됨
+
+    event.preventDefault();
+    // 부모 component로부터 받은 add를 실행
+    //this.props.onAdd(this.state);
+
+    // 컴포넌트의 state를 기본값으로 초기화
+    this.setState({
+   });
+
+    const searchSubwayParam = Object.assign({}, this.state);
+    getSubway(searchSubwayParam)
+      .then(response => {
+        console.log(response);
+        console.log(this);
+        // this.props.history.push({
+        //   pathname: "/map",
+        //   state: { lists: response },
+        // });
+      })
+      .catch(error => {
+        Alert.error(
+          (error && error.message) ||
+            "Oops! Something went wrong. Please try again!"
+        );
+      });
   };
 
   render() {
@@ -123,6 +158,14 @@ class MapInfo extends Component {
       height: "calc(100vh - 60px)",
     };
     return (
+      <div>
+      <div>
+      <form onSubmit={this.submit}>
+      <button id="subwaybtn" type="submit">
+                지하철
+              </button>
+      </form>
+      </div>
       <div>
         <Map
           google={googleMap}
@@ -142,6 +185,7 @@ class MapInfo extends Component {
           {this.displayMarkers()}
           {this.displayInfoWindows()}
         </Map>
+      </div>
       </div>
     );
   }
