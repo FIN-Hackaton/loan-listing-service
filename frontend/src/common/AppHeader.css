@@ -45,3 +45,7 @@
 .app-nav ul li a.active {
   color: #0f96f6;
 }
+
+.fit-picture {
+  margin-top: 14px;
+}

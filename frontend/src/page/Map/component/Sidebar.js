@@ -128,12 +128,11 @@ const Sidebar = props => {
         이름: {name} {name_dong}
       </p>
       {/* <p>층수: {floor}</p> */}
-      <p>면적: {space}</p>
+      <p>면적: {space}㎡</p>
       <p>가격: {price}</p>
-      <span>
-        위치: {city} {dong} {gu}
-      </span>
-      <br />
+      <p>
+        위치: {city} {gu} {dong}
+      </p>
       <span>공인중개사명: {estateName} </span>
       <p>전화번호: 010-7794-7934</p>
       <a href="http://www.brighthouse.co.kr/?NaPm=ct%3Dksn4to0w%7Cci%3D0zK0000abw9v_NXM1eXd%7Ctr%3Dsa%7Chk%3D8d37d23d44aa1e41abea60f61d3a7a4ef0ac57e6">

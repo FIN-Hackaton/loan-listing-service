@@ -625,7 +625,7 @@ class Home extends Component {
 
               {/* <form onSubmit={this.handleSubmit}> */}
               <label>
-                지역 선택:
+                <img class="select-area" src="selectArea.png" alt="" />
                 <select
                   name="sel_area1"
                   value={this.state.sel_area1}
