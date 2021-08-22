@@ -94,7 +94,14 @@ const Sidebar = props => {
               대출상품: {loanDatas[ind].goodName}
             </a> */}
             <p>대출상품: {loanDatas[ind].goodName}</p>
+            <p> 대출금: {loanDatas[ind].price}</p>
             <p>월평균 상환액: {loanDatas[ind].interestMonth}원</p>
+            <p>
+              이자율: {loanDatas[ind].interestLow} ~{" "}
+              {loanDatas[ind].interestHigh}
+            </p>
+
+            <p>은행: {loanDatas[ind].finName}</p>
             <div style={styles.divider} />
           </div>
         );
@@ -128,7 +135,10 @@ const Sidebar = props => {
       </span>
       <br />
       <span>공인중개사명: {estateName} </span>
-      {/* <span>전화번호:A</span> */}
+      <p>전화번호: 010-7794-7934</p>
+      <a href="http://www.brighthouse.co.kr/?NaPm=ct%3Dksn4to0w%7Cci%3D0zK0000abw9v_NXM1eXd%7Ctr%3Dsa%7Chk%3D8d37d23d44aa1e41abea60f61d3a7a4ef0ac57e6">
+        부동산 연결
+      </a>
       <div style={styles.divider} />
 
       {/* <a href="index.html" style={styles.sidebarLink}></a> */}

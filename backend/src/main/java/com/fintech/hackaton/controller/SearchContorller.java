@@ -32,28 +32,39 @@ public class SearchContorller {
         String dbDong = (String) param.get("sel_area3");
         int dbInterest = Integer.parseInt((String) param.get("interest")); // 월부담 가능이자
         int dbCredit = Integer.parseInt((String) param.get("credit")); // 본인자산
-        int dbLoan = Integer.parseInt((String) param.get("loan_period")); // 대출희망금액
+//        int dbLoan = Integer.parseInt((String) param.get("loan_period")); // 대출희망금액
 
 //        System.out.println(dbCity);
 //        System.out.println(dbGu);
 //        System.out.println(dbDong);
         System.out.println("이자" + dbInterest);
         System.out.println("자산" + dbCredit);
-        System.out.println("대출금액" + dbLoan);
+//        System.out.println("대출금액" + dbLoan);
+//
+        List<Loan> interestGoodsData = new ArrayList<>();
+        interestGoodsData = loanService.interestFindGoods(dbInterest);
+        int maxLoanValue = 0;
+        for (Loan data : interestGoodsData) {
+            int goodPrice = data.getPrice();
+
+            if (goodPrice >= maxLoanValue) {
+                maxLoanValue = goodPrice;
+            }
+        }
+        System.out.println(maxLoanValue);
 
 
-        int buyPrice = dbCredit + dbLoan; // 본인자산+대출희망금액 검색
+        int buyPrice = dbCredit + maxLoanValue; // 본인자산+원하는 이자내에서의 맥스 대출한도 검색
         System.out.println(buyPrice);
 
 //        대출 상품 검색
         List<Loan> loanData = new ArrayList<>();
-        if ((dbInterest == 0) && (dbCredit == 0) && (dbLoan == 0)) { // 서울특별시 전부
+        if ((dbInterest == 0) && (dbCredit == 0)) { // 서울특별시 전부
             loanData = loanService.loanFindAll();
         } else {
-            loanData = loanService.loanFindinterset(dbLoan, dbInterest);
+            loanData = loanService.loanFindintersetAndTotal(maxLoanValue, dbInterest);
         }
 
-        System.out.println(loanData);
 
         HashMap<Object, Object> loanInfos = new HashMap<Object, Object>();
 
@@ -80,7 +91,7 @@ public class SearchContorller {
             loanInfo.put("price", price);
             loanInfo.put("info", info);
 
-            loanInfos.put(loanId,loanInfo);
+            loanInfos.put(loanId, loanInfo);
             loanId += 1;
         }
 

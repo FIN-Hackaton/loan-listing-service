@@ -11,8 +11,17 @@ import java.util.List;
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     // 대출상품  희망 가격보단 크고, 희망 이자보다 작은 것 조회
-    @Query(value = "SELECT * FROM loan l WHERE l.price >= ?1 and l.interestMonth <=?2", nativeQuery = true)
-    List<Loan> findGoodsByLoan(Integer price, Integer interestMonth);
+    @Query(value = "SELECT * FROM loan l WHERE l.price = ?1 and l.interestMonth <=?2", nativeQuery = true)
+    List<Loan> findGoodByLoanAndInterest(Integer price, Integer interestMonth);
 
+    // 대출상품  희망 가격보단 크고, 희망 이자보다 작은 것 조회
+    @Query(value = "SELECT * FROM loan l WHERE  l.interestMonth <=?1", nativeQuery = true)
+    List<Loan> findGoodsByLoan(Integer interestMonth);
+
+
+
+    // 대출상품  희망 이자보다 작은 것 조회
+    @Query(value = "SELECT * FROM loan l WHERE l.interestMonth <=?1", nativeQuery = true)
+    List<Loan> findLoanByInterest(Integer interestMonth);
 
 }

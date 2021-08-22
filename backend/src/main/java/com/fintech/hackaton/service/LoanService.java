@@ -43,12 +43,24 @@ public class LoanService {
 //        return new ArrayList<>(houseRepository.findHouseByGu(gu));
 //    }
 //
-    // 지역 + (본인자산+대출희망금액) 검색
-    // 시군구 조회 조회
+
     @Transactional
-    public List<Loan> loanFindinterset(Integer price, Integer interest) {
-        return new ArrayList<>(loanRepository.findGoodsByLoan(price, interest));
+    public List<Loan> loanFindintersetAndTotal(Integer price, Integer interest) {
+        return new ArrayList<>(loanRepository.findGoodByLoanAndInterest(price, interest));
     }
 
+    // 지역 + (본인자산+대출희망금액) 검색
+    // 시군구 조회 조회
+
+    @Transactional
+    public List<Loan> loanFindinterset(Integer interest) {
+        return new ArrayList<>(loanRepository.findGoodsByLoan(interest));
+    }
+
+
+    @Transactional
+    public List<Loan> interestFindGoods(Integer interest) {
+        return new ArrayList<>(loanRepository.findLoanByInterest(interest));
+    }
 
 }
