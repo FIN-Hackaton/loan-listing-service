@@ -566,60 +566,59 @@ class Home extends Component {
       </section> */}
             {/* <h1 className="home-title">여기저기에 흩어진 정보를 여기저기에서 찾아보세요 </h1>  */}
             <br />
-            <img class="fit-picture" src="ment.png" />
+
             <br />
             <br />
             <br />
             <form onSubmit={this.submit}>
+              <div>
+                <img class="fit-picture" src="ment.png" alt="" />
+              </div>
               <label>
-                <div className="search-title">
-                  <span className="span-text">본인 자산</span>
-                  {/* <span className="span-text">대출 희망 금액</span> */}
-                  <span className="span-text">월 부담 가능 이자</span>
+                <div className="container">
+                  <div class="images-container">
+                    <div class="image-container">
+                      <img class="select-picture" src="jasan.png" alt="" />
+                      <select
+                        name="credit"
+                        value={this.state.credit}
+                        onChange={this.changeInput}
+                      >
+                        <option value="">선택</option>
+                        <option value="10000000">1000만원 이하 </option>
+                        <option value="50000000">5000만원 이하 </option>
+                        <option value="100000000">1억원 이하 </option>
+                        <option value="300000000">3억원 이하 </option>
+                        <option value="500000000">5억원 이하 </option>
+                        <option value="1000000000">10억원 이하 </option>
+                        <option value="1000000000">10억 초과 </option>
+                      </select>
+                    </div>
+                    <div class="image-container">
+                      <img
+                        class="select-picture"
+                        src="monthInterest.png"
+                        alt=""
+                      />
 
-                  <div class="container">
-                    <select
-                      name="credit"
-                      value={this.state.credit}
-                      onChange={this.changeInput}
-                    >
-                      <option value="">선택</option>
-                      <option value="10000000">1000만원 이하 </option>
-                      <option value="50000000">5000만원 이하 </option>
-                      <option value="100000000">1억원 이하 </option>
-                      <option value="300000000">3억원 이하 </option>
-                      <option value="500000000">5억원 이하 </option>
-                      <option value="1000000000">10억원 이하 </option>
-                      <option value="1000000000">10억 초과 </option>
-                    </select>
-                    {/* <select
-                      name="loan_period"
-                      value={this.state.loan_period}
-                      onChange={this.changeInput}
-                    >
-                      <option value="">선택</option>
-                      <option value="35000000">3500만원</option>
-                      <option value="50000000">5000만원 이하 </option>
-                      <option value="100000000">1억원 이하 </option>
-                      <option value="150000000">1억5천만원 이하 </option>
-                      <option value="200000000">2억원 이하 </option>
-                      <option value="200000000">2억원 초과 </option>
-                    </select> */}
-
-                    <select
-                      name="interest"
-                      value={this.state.interest}
-                      onChange={this.changeInput}
-                    >
-                      <option value="">선택</option>
-                      <option value="100000">10만원 이하</option>
-                      <option value="300000">30만원 이하 </option>
-                      <option value="500000">50만원 이하 </option>
-                      <option value="700000">70만원 이하 </option>
-                      <option value="1000000">100만원 이하 </option>
-                      <option value="1500000">150만원 이하 </option>
-                      <option value="1800000">180만원 이하 </option>
-                    </select>
+                      <select
+                        name="interest"
+                        value={this.state.interest}
+                        onChange={this.changeInput}
+                      >
+                        <option value="">선택</option>
+                        <option value="100000">10만원 이하</option>
+                        <option value="300000">30만원 이하 </option>
+                        <option value="500000">50만원 이하 </option>
+                        <option value="700000">70만원 이하 </option>
+                        <option value="1000000">100만원 이하 </option>
+                        <option value="1500000">150만원 이하 </option>
+                        <option value="1800000">180만원 이하 </option>
+                      </select>
+                    </div>
+                    {/* <span className="span-text">본인 자산</span> */}
+                    {/* <span className="span-text">대출 희망 금액</span> */}
+                    {/* <span className="span-text">월 부담 가능 이자</span> */}
                   </div>
                 </div>
               </label>

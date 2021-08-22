@@ -9,7 +9,7 @@ import Alert from "react-s-alert";
 // const HOME_PATH = window.HOME_PATH || ".";
 var places = [];
 var newCenterLng, newCenterLat; // 매물들의 좌표 중앙값 구하기
-const subwayList = [];
+var subwayList = [];
 
 class MapInfo extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class MapInfo extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      showingSubway: false,
     };
     // console.log(this.props);
     // DB로부터 받은 매물 정보 사용가능하게 변환
@@ -106,7 +107,7 @@ class MapInfo extends Component {
           <h3>
             {this.state.selectedPlace.name} {this.state.selectedPlace.dong}
           </h3>
-          <p>"전세": {this.state.selectedPlace.price}</p>
+          <p>전세: {this.state.selectedPlace.price}</p>
           <button
             class="detail_btn"
             type="button"
@@ -136,7 +137,9 @@ class MapInfo extends Component {
           animation={0} // {BOUNCE: 1, DROP: 2, Lq: 3, Iq: 4}
           // onClick={this.onMarkerClick}
           icon="/subway3.png"
-        />
+        >
+          {(subwayList = [])}
+        </Marker>
       );
     });
   };
@@ -176,7 +179,7 @@ class MapInfo extends Component {
     const mapStyles = {
       position: "relative",
       width: "100%",
-      height: "calc(100vh - 60px)",
+      height: "calc(100vh - 90px)",
     };
     return (
       <div>
@@ -195,32 +198,30 @@ class MapInfo extends Component {
               <a id="subwaybtn" onClick={this.submit}>
                 지하철
               </a>
-
               {/* <button onClick={Map.submit}>지하철</button> */}
             </li>
           </ul>
         </div>
-        <div>
-          <Map
-            google={googleMap}
-            zoom={12}
-            style={mapStyles}
-            initialCenter={{ lat: newCenterLat, lng: newCenterLng }}
-            onClick={this.onMapClicked}
-            streetViewControl={true}
-            fullscreenControl={false}
-            scaleControl={true}
-            mapTypeControl={true}
-            mapTypeControlOptions={{
-              style: googleMap.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-              position: googleMap.maps.ControlPosition.TOP_RIGHT,
-            }}
-          >
-            {this.displayMarkers()}
-            {this.displayInfoWindows()}
-            {this.displaySubwayMarkers()}
-          </Map>
-        </div>
+
+        <Map
+          google={googleMap}
+          zoom={12}
+          style={mapStyles}
+          initialCenter={{ lat: newCenterLat, lng: newCenterLng }}
+          onClick={this.onMapClicked}
+          streetViewControl={true}
+          fullscreenControl={false}
+          scaleControl={true}
+          mapTypeControl={true}
+          mapTypeControlOptions={{
+            style: googleMap.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: googleMap.maps.ControlPosition.TOP_RIGHT,
+          }}
+        >
+          {this.displayMarkers()}
+          {this.displayInfoWindows()}
+          {this.displaySubwayMarkers()}
+        </Map>
       </div>
     );
   }

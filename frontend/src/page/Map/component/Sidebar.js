@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const styles = {
   sidebar: {
     width: "20vw",
-    height: "100vh",
+    height: "cal(100vh-60px)",
   },
   sidebarLink: {
     display: "block",
@@ -94,7 +94,7 @@ const Sidebar = props => {
               대출상품: {loanDatas[ind].goodName}
             </a> */}
             <p>대출상품: {loanDatas[ind].goodName}</p>
-            <p> 대출금: {loanDatas[ind].price}</p>
+            <p>대출금: {loanDatas[ind].price}</p>
             <p>월평균 상환액: {loanDatas[ind].interestMonth}원</p>
             <p>
               이자율: {loanDatas[ind].interestLow} ~{" "}
@@ -127,7 +127,7 @@ const Sidebar = props => {
       <p>
         이름: {name} {name_dong}
       </p>
-      <p>층수: {floor}</p>
+      {/* <p>층수: {floor}</p> */}
       <p>면적: {space}</p>
       <p>가격: {price}</p>
       <span>
@@ -144,9 +144,9 @@ const Sidebar = props => {
       {/* <a href="index.html" style={styles.sidebarLink}></a> */}
       <h2>대출 추천상품</h2>
 
-      <button>물음표</button>
+      {/* <button>물음표</button> */}
       <button>
-        <img src="help.png"></img>
+        <img src="/help.png"></img>
       </button>
       {rendering()}
     </div>

@@ -48,19 +48,19 @@ class Login extends Component {
 
     return (
       <div className="login-page">
-      <div className="login-container">
-        <div className="login-content">
-          <h1 className="login-title">Login to 애플리케이션이름</h1>
-          <SocialLogin />
-          <div className="or-separator">
-            <span className="or-text">OR</span>
+        <div className="login-container">
+          <div className="login-content">
+            <h1 className="login-title">Login to 여기저기</h1>
+            <SocialLogin />
+            <div className="or-separator">
+              <span className="or-text">OR</span>
+            </div>
+            <LoginForm {...this.props} />
+            <span className="signup-link">
+              New user? <Link to="/signup">Sign up!</Link>
+            </span>
           </div>
-          <LoginForm {...this.props} />
-          <span className="signup-link">
-            New user? <Link to="/signup">Sign up!</Link>
-          </span>
         </div>
-      </div>
       </div>
     );
   }

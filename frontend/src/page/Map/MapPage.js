@@ -6,14 +6,13 @@ import "./MapPage.css";
 
 const styles = {
   content: {
-    marginTop: "60px",
-    height: "cal(100vh -60px)",
+    marginTop: "30px",
+    // height: "cal(100vh -120px)",
   },
   sidebar: {
-    // paddingTop: "60px",
-    marginTop: "60px",
+    marginTop: "90px",
     width: "18vw",
-    height: "cal(100vh -60px)",
+    height: "",
   },
 };
 
