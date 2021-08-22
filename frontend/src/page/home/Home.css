@@ -367,11 +367,16 @@ select {
   justify-content: center;
   align-items: center;
   margin: auto;
+  margin-top: 30px
 }
 
 .image-container {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .select-area {
+}
+
+.fit-picture {
+  /* padding-bottom: 40px; */
 }
