@@ -16,9 +16,9 @@ class AppHeader extends Component {
             <nav className="app-nav">
               {this.props.authenticated ? (
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/map">Map(임시테스트용)</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/profile">Profile</NavLink>
                   </li>
@@ -30,9 +30,9 @@ class AppHeader extends Component {
                 </ul>
               ) : (
                 <ul>
-                  <li>
+                  {/* <li>
                     <NavLink to="/map">Map(임시테스트용)</NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink to="/login">Login</NavLink>
                   </li>

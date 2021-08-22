@@ -574,7 +574,7 @@ class Home extends Component {
               <label>
                 <div className="search-title">
                   <span className="span-text">본인 자산</span>
-                  <span className="span-text">대출 희망 금액</span>
+                  {/* <span className="span-text">대출 희망 금액</span> */}
                   <span className="span-text">월 부담 가능 이자</span>
 
                   <div class="container">
@@ -592,7 +592,7 @@ class Home extends Component {
                       <option value="1000000000">10억원 이하 </option>
                       <option value="1000000000">10억 초과 </option>
                     </select>
-                    <select
+                    {/* <select
                       name="loan_period"
                       value={this.state.loan_period}
                       onChange={this.changeInput}
@@ -604,7 +604,7 @@ class Home extends Component {
                       <option value="150000000">1억5천만원 이하 </option>
                       <option value="200000000">2억원 이하 </option>
                       <option value="200000000">2억원 초과 </option>
-                    </select>
+                    </select> */}
 
                     <select
                       name="interest"
