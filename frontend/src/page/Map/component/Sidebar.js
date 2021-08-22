@@ -33,13 +33,16 @@ const Sidebar = props => {
 
   const links = [];
 
-  for (let ind = 0; ind < 10; ind++) {
-    links.push(
-      <a key={ind} href="#" style={styles.sidebarLink}>
-        대출상품 {ind}
-      </a>
-    );
-  }
+  const shuffleArray = array => {
+    for (let i = 0; i < Object.keys(array).length; i++) {
+      let j = Math.floor(Math.random() * (i + 1));
+      // [array[i], array[j]] = [array[j], array[i]];
+      const x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+    return array;
+  };
 
   if (props.places2) {
     var name = props.places2.name;
@@ -53,7 +56,63 @@ const Sidebar = props => {
     var gu = props.places2.addrgu;
 
     var estateName = props.places2.estateName;
+
+    var loanDatas = props.places2.loanData;
+
+    // if (loanDatas) {
+    //   loanDatas = shuffleArray(loanDatas);
+    //   for (let ind = 0; ind < 10; ind++) {
+    //     var loanData = loanDatas[ind];
+    //     console.log();
+    //     var goodName = loanData.goodName;
+    //     links.push(
+    //       <div>
+    //         <a key={ind} href="#" style={styles.sidebarLink}>
+    //           대출상품: {goodName}
+    //         </a>
+    //         <div style={styles.divider} />
+    //       </div>
+    //     );
+    //   }
+    // }
   }
+
+  const rendering = () => {
+    const result = [];
+    if (loanDatas) {
+      for (let i = 0; i < Object.keys(loanDatas).length; i++) {
+        let j = Math.floor(Math.random() * (i + 1));
+        // [array[i], array[j]] = [array[j], array[i]];
+        const x = loanDatas[i];
+        loanDatas[i] = loanDatas[j];
+        loanDatas[j] = x;
+      }
+      for (let ind = 0; ind < 10; ind++) {
+        result.push(
+          <div>
+            {/* <a key={ind} href="#" style={styles.sidebarLink}>
+              대출상품: {loanDatas[ind].goodName}
+            </a> */}
+            <p>대출상품: {loanDatas[ind].goodName}</p>
+            <p>월평균 상환액: {loanDatas[ind].interestMonth}원</p>
+            <div style={styles.divider} />
+          </div>
+        );
+      }
+      result.sort(function (a, b) {
+        return a.props.children[1].props.children[1] <
+          b.props.children[1].props.children[1]
+          ? -1
+          : a.props.children[1].props.children[1] >
+            b.props.children[1].props.children[1]
+          ? 1
+          : 0;
+      });
+
+      console.log(result);
+      return result;
+    }
+  };
 
   return (
     <div style={styles.content}>
@@ -74,8 +133,13 @@ const Sidebar = props => {
 
       {/* <a href="index.html" style={styles.sidebarLink}></a> */}
       <h2>대출 추천상품</h2>
+
+      <button>물음표</button>
       <button><img src="help.png"></img></button>
-      {links}
+      {rendering()}
+
+   
+
     </div>
   );
 };

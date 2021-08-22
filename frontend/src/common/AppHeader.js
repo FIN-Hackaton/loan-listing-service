@@ -9,9 +9,8 @@ class AppHeader extends Component {
         <div className="container">
           <div className="app-branding">
             <Link to="/" className="app-title">
-            <img class="fit-picture" src="logo.png"></img> 
+              <img class="fit-picture" src="logo.png"></img>
             </Link>
-
           </div>
           <div className="app-options">
             <nav className="app-nav">
