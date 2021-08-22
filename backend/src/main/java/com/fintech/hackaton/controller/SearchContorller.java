@@ -94,7 +94,7 @@ public class SearchContorller {
         } else {
             houseData = houseService.houseFindCityCredit(dbGu, dbDong, buyPrice);
         }
-
+        System.out.println(houseData);
 //        System.out.println(houseData);
         for (House data : houseData) {
             Long id = data.getId();
@@ -135,7 +135,7 @@ public class SearchContorller {
 //            System.out.println(id);
 //            System.out.println(result);
         }
-        System.out.println(loanInfos);
+//        System.out.println(loanInfos);
         return result;
     }
 

@@ -1,8 +1,7 @@
 package com.fintech.hackaton.controller;
 
-import com.fintech.hackaton.model.Forsaleinfo;
+import com.fintech.hackaton.model.Loan;
 import com.fintech.hackaton.model.Subway;
-import com.fintech.hackaton.service.HouseService;
 import com.fintech.hackaton.service.SubwayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -20,17 +19,36 @@ public class SubwayController {
 
     @PostMapping("/subway")
     @ResponseBody
-    public HashMap<Object, Object> json(@RequestBody HashMap<Object, Object> param){
-        System.out.println("param : " + param);  //요청값
+    public HashMap<Object, Object> json(@RequestBody HashMap<Object, Object> param) {
+//        System.out.println("param : " + param);  //요청값
 
 
         HashMap<Object, Object> result = new HashMap<Object, Object>();  //리턴값
 
         List<Subway> subway_data = subwayService.findAll();
-        System.out.println(subway_data);
+//        System.out.println(subway_data);
         //Optional<Forsaleinfo> sale = forsaleService.findByName(name);
 
-        result.put("RESULT","성공!");
-        return result;
+        HashMap<Object, Object> subways = new HashMap<Object, Object>();
+
+        int loanId = 0;
+        for (Subway data : subway_data) {
+            HashMap<Object, Object> subway = new HashMap<Object, Object>();
+            HashMap<Object, Object> position = new HashMap<Object, Object>();
+
+            Long id = data.getId();
+            String name = data.getName();
+            String lat = data.get위도();
+            String lng = data.get경도();
+
+            position.put("lat", lat);
+            position.put("lng", lng);
+
+            subway.put("name", name);
+            subway.put("position", position);
+
+            subways.put(id, subway);
+        }
+        return subways;
     }
 }

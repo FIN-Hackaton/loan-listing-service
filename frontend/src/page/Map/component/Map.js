@@ -9,6 +9,8 @@ import Alert from "react-s-alert";
 // const HOME_PATH = window.HOME_PATH || ".";
 var places = [];
 var newCenterLng, newCenterLat; // 매물들의 좌표 중앙값 구하기
+const subwayList = [];
+
 class MapInfo extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +53,8 @@ class MapInfo extends Component {
     newCenterLat = (leftTop.lat + rightBottom.lat) / 2;
     newCenterLng = (leftTop.lng + rightBottom.lng) / 2;
     console.log(newCenterLat, newCenterLng);
+
+    // console.log(places);
   }
 
   onMarkerClick = props => {
@@ -112,12 +116,31 @@ class MapInfo extends Component {
               this.props.sideBarOn(this.state.selectedPlace);
             }}
           >
-           상세정보
-            
+            상세정보
           </button>
         </div>
       </InfoWindowEx>
     );
+  };
+
+  displaySubwayMarkers = () => {
+    // console.log(this.state);
+    // console.log(places);
+    return subwayList.map((place, i) => {
+      console.log("subway");
+      return (
+        <Marker
+          key={place[0]}
+          position={{ lat: place[1].lat, lng: place[1].lng }}
+          // label={store.title}
+          label={place[0]}
+          place_={place}
+          animation={0} // {BOUNCE: 1, DROP: 2, Lq: 3, Iq: 4}
+          // onClick={this.onMarkerClick}
+          icon="/subway3.png"
+        />
+      );
+    });
   };
 
   submit = event => {
@@ -129,18 +152,18 @@ class MapInfo extends Component {
     //this.props.onAdd(this.state);
 
     // 컴포넌트의 state를 기본값으로 초기화
-    this.setState({
-   });
+    this.setState({});
 
     const searchSubwayParam = Object.assign({}, this.state);
     getSubway(searchSubwayParam)
       .then(response => {
-        console.log(response);
-        console.log(this);
-        // this.props.history.push({
-        //   pathname: "/map",
-        //   state: { lists: response },
-        // });
+        // console.log(response);
+
+        for (var id in response) {
+          // console.log(response[id].name);
+          subwayList.push([response[id].name, response[id].position]);
+        }
+        console.log(subwayList);
       })
       .catch(error => {
         Alert.error(
@@ -159,33 +182,47 @@ class MapInfo extends Component {
     };
     return (
       <div>
-      <div>
-      <form onSubmit={this.submit}>
-      <button id="subwaybtn" type="submit">
+        <div class="nav_user" role="tablist">
+          <ul>
+            <li class="item_line">
+              <a>매매</a>
+            </li>
+            <li class="item_line">
+              <a>전세</a>
+            </li>
+            <li class="item_line">
+              <a>월세</a>
+            </li>
+            <li class="item_line">
+              <a id="subwaybtn" onClick={this.submit}>
                 지하철
-              </button>
-      </form>
-      </div>
-      <div>
-        <Map
-          google={googleMap}
-          zoom={12}
-          style={mapStyles}
-          initialCenter={{ lat: newCenterLat, lng: newCenterLng }}
-          onClick={this.onMapClicked}
-          streetViewControl={true}
-          fullscreenControl={false}
-          scaleControl={true}
-          mapTypeControl={true}
-          mapTypeControlOptions={{
-            style: googleMap.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-            position: googleMap.maps.ControlPosition.TOP_RIGHT,
-          }}
-        >
-          {this.displayMarkers()}
-          {this.displayInfoWindows()}
-        </Map>
-      </div>
+              </a>
+
+              {/* <button onClick={Map.submit}>지하철</button> */}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Map
+            google={googleMap}
+            zoom={12}
+            style={mapStyles}
+            initialCenter={{ lat: newCenterLat, lng: newCenterLng }}
+            onClick={this.onMapClicked}
+            streetViewControl={true}
+            fullscreenControl={false}
+            scaleControl={true}
+            mapTypeControl={true}
+            mapTypeControlOptions={{
+              style: googleMap.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+              position: googleMap.maps.ControlPosition.TOP_RIGHT,
+            }}
+          >
+            {this.displayMarkers()}
+            {this.displayInfoWindows()}
+            {this.displaySubwayMarkers()}
+          </Map>
+        </div>
       </div>
     );
   }

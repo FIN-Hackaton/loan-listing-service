@@ -109,7 +109,7 @@ const Sidebar = props => {
           : 0;
       });
 
-      console.log(result);
+      // console.log(result);
       return result;
     }
   };
@@ -135,11 +135,10 @@ const Sidebar = props => {
       <h2>대출 추천상품</h2>
 
       <button>물음표</button>
-      <button><img src="help.png"></img></button>
+      <button>
+        <img src="help.png"></img>
+      </button>
       {rendering()}
-
-   
-
     </div>
   );
 };
