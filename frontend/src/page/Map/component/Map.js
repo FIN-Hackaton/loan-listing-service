@@ -106,9 +106,7 @@ class MapInfo extends Component {
           <h3>
             {this.state.selectedPlace.name} {this.state.selectedPlace.dong}
           </h3>
-          <p>
-            {this.state.selectedPlace.rentMy}: {this.state.selectedPlace.price}
-          </p>
+          <p>"전세": {this.state.selectedPlace.price}</p>
           <button
             class="detail_btn"
             type="button"

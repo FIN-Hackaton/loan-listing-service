@@ -748,11 +748,11 @@ class Home extends Component {
               <button id="searchbtn" type="submit">
                 <img name="search" src="/search.png"></img>
               </button>
-              <div>
+              {/* <div>
                 {this.state.interest} {this.state.loan_period}{" "}
                 {this.state.credit} {this.state.sel_area1}{" "}
                 {this.state.sel_area2} {this.state.sel_area3}
-              </div>
+              </div> */}
             </form>
           </div>
         </div>
