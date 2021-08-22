@@ -1,4 +1,4 @@
-export const API_BASE_URL = "http://221.168.38.243:8080/";
+export const API_BASE_URL = "http://221.168.38.243:8080";
 export const ACCESS_TOKEN = "accessToken";
 
 export const OAUTH2_REDIRECT_URI = "http://221.168.38.243:3000/oauth2/redirect";
