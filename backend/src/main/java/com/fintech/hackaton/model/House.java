@@ -13,12 +13,12 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "home")
+@Entity(name = "homeTest2")
 public class House {
 
     @Id // Primary Key
     @Column(nullable = true, unique = true, length = 255)
-    private Long no;
+    private Long id;
 
     @Column(nullable = true, length = 255)
     private String atclnm;
@@ -37,6 +37,9 @@ public class House {
 
     @Column(nullable = true, length = 255)
     private String handprc;
+
+    @Column(nullable = true, length = 255)
+    private String price;
 
     @Column(nullable = true, length = 255)
     private String spc1;

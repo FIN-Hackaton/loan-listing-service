@@ -27,16 +27,16 @@ public class SearchContorller {
         String dbCity = (String) param.get("sel_area1");
         String dbGu = (String) param.get("sel_area2");
         String dbDong = (String) param.get("sel_area3");
-        String dbInterest = (String) param.get("interest");
-        String dbCredit = (String) param.get("credit");
-        String dbLoan = (String) param.get("loan_period");
+        String dbInterest = (String) param.get("interest"); // 월부담 가능이자
+        String dbCredit = (String) param.get("credit"); // 본인자산
+        String dbLoan = (String) param.get("loan_period"); // 대출희망금액
 
 //        System.out.println(dbCity);
 //        System.out.println(dbGu);
 //        System.out.println(dbDong);
-//        System.out.println(dbInterest);
-//        System.out.println(dbCredit);`
-//        System.out.println(dbLoan);
+        System.out.println(dbInterest);
+        System.out.println(dbCredit);
+        System.out.println(dbLoan);
 
         List<House> houseData = new ArrayList<>();
         if ((Objects.equals(dbDong, "")) && (Objects.equals(dbGu, ""))) { // 서울특별시 전부
@@ -46,9 +46,9 @@ public class SearchContorller {
         } else {
             houseData = houseService.houseFindCity(dbGu, dbDong);
         }
-
+        System.out.println(houseData);
         for (House data : houseData) {
-            Long id = data.getNo();
+            Long id = data.getId();
             String aptName = data.getAtclnm();
             String aptDong = data.getBildnm();
             String aptFloor = data.getFlrinfo();
