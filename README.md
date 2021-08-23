@@ -56,4 +56,4 @@ facebook, github 로그인은 막아둠 (필요하면 넣겠지만, 없으면 �
 
 
 ## 발표자료
-[발표자료](./docs/여기저기\ 발표자료\ \(Everywhere조\)\ 마지막.pdf)
+[발표자료](/https://github.com/FIN-Hackaton/loan-listing-service/blob/b4dba75cecd1811c39017caa8f757551968f05e1/docs/%EC%97%AC%EA%B8%B0%EC%A0%80%EA%B8%B0%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20(Everywhere%EC%A1%B0)%20%EB%A7%88%EC%A7%80%EB%A7%89.pdf)
