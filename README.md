@@ -62,7 +62,7 @@ nohup java -jar ./build/libs/hackaton-0.0.1-SNAPSHOT.jar > mylog.log 2>&1 &
 
 
 ## 발표자료
-[발표자료 PDF](https://github.com/FIN-Hackaton/loan-listing-service/blob/main/docs/%EC%97%AC%EA%B8%B0%EC%A0%80%EA%B8%B0%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20(Everywhere%EC%A1%B0)%20%EB%A7%88%EC%A7%80%EB%A7%89.pdf)
+[발표자료 PDF](https://github.com/FIN-Hackaton/loan-listing-service/blob/main/docs/%EC%97%AC%EA%B8%B0%EC%A0%80%EA%B8%B0%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20(Everywhere%EC%A1%B0).pdf)
 
 [발표자료 WIKI](https://github.com/FIN-Hackaton/loan-listing-service/wiki)
 
